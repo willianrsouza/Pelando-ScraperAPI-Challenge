@@ -1,0 +1,15 @@
+C:\Users\dti Digital\Documents\Projects\IGotUScraperAPI\IGotUScraperApi\Application\bin\Debug\net7.0\IGotUScraper.Application.deps.json
+C:\Users\dti Digital\Documents\Projects\IGotUScraperAPI\IGotUScraperApi\Application\bin\Debug\net7.0\IGotUScraper.Application.dll
+C:\Users\dti Digital\Documents\Projects\IGotUScraperAPI\IGotUScraperApi\Application\bin\Debug\net7.0\IGotUScraper.Application.pdb
+C:\Users\dti Digital\Documents\Projects\IGotUScraperAPI\IGotUScraperApi\Application\bin\Debug\net7.0\IGotUScraper.Domain.dll
+C:\Users\dti Digital\Documents\Projects\IGotUScraperAPI\IGotUScraperApi\Application\bin\Debug\net7.0\IGotUScraper.Domain.pdb
+C:\Users\dti Digital\Documents\Projects\IGotUScraperAPI\IGotUScraperApi\Application\obj\Debug\net7.0\IGotUScraper.Application.csproj.AssemblyReference.cache
+C:\Users\dti Digital\Documents\Projects\IGotUScraperAPI\IGotUScraperApi\Application\obj\Debug\net7.0\IGotUScraper.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dti Digital\Documents\Projects\IGotUScraperAPI\IGotUScraperApi\Application\obj\Debug\net7.0\IGotUScraper.Application.AssemblyInfoInputs.cache
+C:\Users\dti Digital\Documents\Projects\IGotUScraperAPI\IGotUScraperApi\Application\obj\Debug\net7.0\IGotUScraper.Application.AssemblyInfo.cs
+C:\Users\dti Digital\Documents\Projects\IGotUScraperAPI\IGotUScraperApi\Application\obj\Debug\net7.0\IGotUScraper.Application.csproj.CoreCompileInputs.cache
+C:\Users\dti Digital\Documents\Projects\IGotUScraperAPI\IGotUScraperApi\Application\obj\Debug\net7.0\IGotUScraper.Application.csproj.CopyComplete
+C:\Users\dti Digital\Documents\Projects\IGotUScraperAPI\IGotUScraperApi\Application\obj\Debug\net7.0\IGotUScraper.Application.dll
+C:\Users\dti Digital\Documents\Projects\IGotUScraperAPI\IGotUScraperApi\Application\obj\Debug\net7.0\refint\IGotUScraper.Application.dll
+C:\Users\dti Digital\Documents\Projects\IGotUScraperAPI\IGotUScraperApi\Application\obj\Debug\net7.0\IGotUScraper.Application.pdb
+C:\Users\dti Digital\Documents\Projects\IGotUScraperAPI\IGotUScraperApi\Application\obj\Debug\net7.0\ref\IGotUScraper.Application.dll

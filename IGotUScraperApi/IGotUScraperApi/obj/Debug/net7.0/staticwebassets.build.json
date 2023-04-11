@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "3S5PHeN30gyiIgZYDSeOson1hIoP7wya0EWUsGUnXXI=",
+  "Source": "IGotUScraper.Api",
+  "BasePath": "_content/IGotUScraper.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
