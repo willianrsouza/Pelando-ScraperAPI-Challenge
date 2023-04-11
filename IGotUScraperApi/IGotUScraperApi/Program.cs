@@ -1,9 +1,6 @@
-
 using IGotUScraperApi.DependencyInjection;
 using IGotUScraperApi.Startup.VersionamentoApi;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Server.IISIntegration;
-using Microsoft.Extensions.Options;
 
 internal static class Program
 {
@@ -17,14 +14,14 @@ internal static class Program
         builder.Services.AddApiVersioning();
         builder.Services.ConfigureApiVersion();
         builder.Services.AddDependencyResolver();
-
+        builder.Services.AddMediatR(x => x.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
         builder.Services.AddAuthentication(x =>
         {
             x.DefaultAuthenticateScheme = IISDefaults.AuthenticationScheme;
             x.DefaultChallengeScheme = IISDefaults.AuthenticationScheme;
         });
 
-            var app = builder.Build();
+        var app = builder.Build();
 
         if (app.Environment.IsDevelopment())
         {

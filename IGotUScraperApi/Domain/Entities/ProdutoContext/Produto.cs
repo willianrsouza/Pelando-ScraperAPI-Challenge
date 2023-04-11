@@ -9,6 +9,7 @@ namespace IGotUScraper.Domain.Entities.ProdutoContext
 {
     public class Produto : Entity
     {
+        public int Id { get; protected set; }
         public string Titulo { get; protected set; }
         public double Preco { get; protected set; }
         public string Descricao { get; protected set; }
