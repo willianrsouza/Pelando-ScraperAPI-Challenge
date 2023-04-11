@@ -35,6 +35,5 @@ internal static class Program
         app.MapControllers();
 
         app.Run();
-
     }
 }

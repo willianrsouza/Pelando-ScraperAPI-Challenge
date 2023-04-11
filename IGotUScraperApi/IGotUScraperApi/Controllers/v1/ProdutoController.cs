@@ -24,7 +24,7 @@ namespace IGotUScraperApi.Controllers.v1
         }
 
         /// <summary>
-        /// Obter Dados do Produto Por URL
+        /// Obter Dados do Produto
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
