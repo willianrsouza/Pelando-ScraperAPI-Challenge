@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dCAMS3RvEVhYqtq6Y1T4V+p+/dHvM+3dChTZLLrZK7Ro+3r1E/RLgL4kfNycjw3IKDdYPzXCHtG4uwVdvJ/7QQ==",
+  "dgSpecHash": "BPvrKx9SvFbrrKglbipqLh8E8zDIiRSV61FjzIuqBQEepm9SYbhwigTfkTTGFXrwYYBa1b7HFnIak8TgwHC2sg==",
   "success": true,
   "projectFilePath": "C:\\Users\\dti Digital\\Documents\\Projects\\IGotUScraperAPI\\IGotUScraperApi\\IGotUScraperApi\\IGotUScraper.Api.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,7 @@
     "C:\\Users\\dti Digital\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
     "C:\\Users\\dti Digital\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.18.1\\microsoft.visualstudio.azure.containers.tools.targets.1.18.1.nupkg.sha512",
     "C:\\Users\\dti Digital\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\dti Digital\\.nuget\\packages\\swashbuckle.aspnetcore.annotations\\6.5.0\\swashbuckle.aspnetcore.annotations.6.5.0.nupkg.sha512",
     "C:\\Users\\dti Digital\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "C:\\Users\\dti Digital\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
     "C:\\Users\\dti Digital\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"

@@ -39,3 +39,6 @@ C:\Users\dti Digital\Documents\Projects\IGotUScraperAPI\IGotUScraperApi\IGotUScr
 C:\Users\dti Digital\Documents\Projects\IGotUScraperAPI\IGotUScraperApi\IGotUScraperApi\obj\Debug\net7.0\IGotUScraper.Api.pdb
 C:\Users\dti Digital\Documents\Projects\IGotUScraperAPI\IGotUScraperApi\IGotUScraperApi\obj\Debug\net7.0\IGotUScraper.Api.genruntimeconfig.cache
 C:\Users\dti Digital\Documents\Projects\IGotUScraperAPI\IGotUScraperApi\IGotUScraperApi\obj\Debug\net7.0\ref\IGotUScraper.Api.dll
+C:\Users\dti Digital\Documents\Projects\IGotUScraperAPI\IGotUScraperApi\IGotUScraperApi\bin\Debug\net7.0\MediatR.dll
+C:\Users\dti Digital\Documents\Projects\IGotUScraperAPI\IGotUScraperApi\IGotUScraperApi\bin\Debug\net7.0\MediatR.Contracts.dll
+C:\Users\dti Digital\Documents\Projects\IGotUScraperAPI\IGotUScraperApi\IGotUScraperApi\bin\Debug\net7.0\Swashbuckle.AspNetCore.Annotations.dll
