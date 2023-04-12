@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IGotUScraper.Infrastructure
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2BD2FC18-9D8A-45BE-BCAA-003875DF2BCE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IGotUScraper.Utilities", "Utilities\IGotUScraper.Utilities.csproj", "{9BBB2F3C-9BC6-4C01-B4B3-1039F05A2BAD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{3C577053-FA39-4DAF-B9D7-B80F5C7D1BD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C577053-FA39-4DAF-B9D7-B80F5C7D1BD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C577053-FA39-4DAF-B9D7-B80F5C7D1BD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BBB2F3C-9BC6-4C01-B4B3-1039F05A2BAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BBB2F3C-9BC6-4C01-B4B3-1039F05A2BAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BBB2F3C-9BC6-4C01-B4B3-1039F05A2BAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BBB2F3C-9BC6-4C01-B4B3-1039F05A2BAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
