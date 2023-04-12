@@ -15,7 +15,6 @@ namespace IGotUScraper.Application.Factory
         {
             obterValoresProduto(url);
             obterDescricaoProduto(url);
-
             ProdutoFactory.Url = url;
         }
 

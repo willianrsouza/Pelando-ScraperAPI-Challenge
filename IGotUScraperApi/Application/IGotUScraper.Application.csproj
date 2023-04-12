@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\IGotUScraper.Domain.csproj" />
+    <ProjectReference Include="..\Utilities\IGotUScraper.Utilities.csproj" />
   </ItemGroup>
 
 </Project>
