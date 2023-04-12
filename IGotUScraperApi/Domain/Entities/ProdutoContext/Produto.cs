@@ -15,6 +15,7 @@ namespace IGotUScraper.Domain.Entities.ProdutoContext
         public string Descricao { get; protected set; }
         public string Url { get; protected set; }
 
+
         public Produto(string titulo, double preco, string descricao, string url)
         {
             Titulo = titulo;
