@@ -13,11 +13,22 @@ namespace IGotUScraper.Utilities
             return capturarSegmento.Replace("-", " ").Replace("/", "").ToLower();
         }
 
+        public static string ObterNomeEmpresa(string caminho)
+        {
+            var uri = new UriBuilder(caminho).Uri.Authority;
+            var capturarSegmento = uri.Segments[2];
+
+            return capturarSegmento;
+        }
+
         public static string ObterCaminhoBase(string caminho)
         {
             var uri = new UriBuilder(caminho).Uri;
 
             return uri.Authority;
         }
+
+
+
     }
 }

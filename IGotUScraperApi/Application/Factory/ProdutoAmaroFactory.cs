@@ -3,24 +3,23 @@ using IGotUScraper.Application.Factory.Dto;
 
 namespace IGotUScraper.Application.Factory
 {
-    public class ProdutoAmaroFactory : ScraperFactory
+    public class ProdutoAmaroFactory : ProdutoFactory
     {
         private readonly HtmlWeb _htmlWeb;
-        private ProdutoFactoryDto _produto;
+        private FactoryDto _factoryDto;
 
-        public ProdutoAmaroFactory() 
+        public ProdutoAmaroFactory()
         {
-            _htmlWeb  = new HtmlWeb();
-            _produto = new ProdutoFactoryDto(); 
+            _htmlWeb = new HtmlWeb();
+            _factoryDto = new FactoryDto();
         }
 
-        public ProdutoFactoryDto obterDadosProduto(string url)
+        protected override FactoryDto ObterDados(string url)
         {
             construirValoresProduto(url);
             construirDescricaoProduto(url);
-            _produto.UrlBase = url;
 
-            return _produto;
+            return _factoryDto;
         }
 
         private void construirValoresProduto(string url)
@@ -30,8 +29,8 @@ namespace IGotUScraper.Application.Factory
 
             foreach (var item in valoresProduto)
             {
-                _produto.Titulo = item.SelectSingleNode("//*[@id=\"productOptions\"]/h1").InnerText;
-                _produto.Preco = item.SelectSingleNode("//*[@id=\"productOptions\"]/div[3]/div[1]/strong").InnerText;
+                _factoryDto.Titulo = item.SelectSingleNode("//*[@id=\"productOptions\"]/h1").InnerText;
+                _factoryDto.Preco = item.SelectSingleNode("//*[@id=\"productOptions\"]/div[3]/div[1]/strong").InnerText;
             }
         }
 
@@ -43,7 +42,7 @@ namespace IGotUScraper.Application.Factory
 
             foreach (var item in valoresProduto)
             {
-                _produto.Descricao = item.SelectSingleNode("/html/body/div/div[1]/div[4]/div[2]/div[1]/div[1]/div/section/div/p[1]/text()").InnerText;
+                _factoryDto.Descricao = item.SelectSingleNode("/html/body/div/div[1]/div[4]/div[2]/div[1]/div[1]/div/section/div/p[1]/text()").InnerText;
             }
         }
     }
