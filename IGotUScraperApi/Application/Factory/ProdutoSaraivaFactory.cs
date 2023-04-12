@@ -3,7 +3,7 @@ using IGotUScraper.Application.Factory.Dto;
 
 namespace IGotUScraper.Application.Factory
 {
-    internal class ProdutoSaraivaFactory : ProdutoFactory
+    public class ProdutoSaraivaFactory : ProdutoFactory
     {
         private readonly HtmlWeb _htmlWeb;
         private FactoryDto _factoryDto;

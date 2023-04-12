@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text.RegularExpressions;
-
-namespace IGotUScraper.Utilities
+﻿namespace IGotUScraper.Utilities
 {
     public static class ExtrairDadosPath
     {
@@ -15,10 +12,10 @@ namespace IGotUScraper.Utilities
 
         public static string ObterNomeEmpresa(string caminho)
         {
-            var uri = new UriBuilder(caminho).Uri.Authority;
-            var capturarSegmento = uri.Segments[2];
+            var uri = new UriBuilder(caminho).Uri;
+            var capturarSegmento = uri.Host;
 
-            return capturarSegmento;
+            return capturarSegmento.Replace("w", "").Replace("com", "");
         }
 
         public static string ObterCaminhoBase(string caminho)
@@ -27,8 +24,5 @@ namespace IGotUScraper.Utilities
 
             return uri.Authority;
         }
-
-
-
     }
 }
