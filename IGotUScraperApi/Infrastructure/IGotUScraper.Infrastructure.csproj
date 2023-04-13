@@ -10,8 +10,4 @@
     <ProjectReference Include="..\Domain\IGotUScraper.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Db\" />
-  </ItemGroup>
-
 </Project>

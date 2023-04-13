@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IGotUScraper.Domain.Entities.ProdutoContext
+namespace IGotUScraper.Infrastructure.Db.Pelando.EmpresaRepository
 {
-    internal class Empresa
+    internal class EmpresaRepository
     {
     }
 }
