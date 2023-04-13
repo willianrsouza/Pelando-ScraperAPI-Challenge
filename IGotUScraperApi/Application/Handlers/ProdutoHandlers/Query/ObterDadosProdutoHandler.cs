@@ -1,4 +1,5 @@
 ﻿using IGotUScraper.Application.Factory;
+using IGotUScraper.Application.Factory.Dto;
 using IGotUScraper.Application.Handlers.ProdutoHandlers.Dto;
 using IGotUScraper.Utilities;
 using MediatR;
@@ -8,12 +9,10 @@ namespace IGotUScraper.Application.Handlers.ProdutoHandlers.Query
 {
     public class ObterDadosProdutoHandler : IRequestHandler<ObterDadosProdutoQuery, ProdutoDto>
     {
-        private readonly ScraperFactory _produtoAmazonFactory;
         private readonly ILogger<ObterDadosProdutoHandler> _logger;
 
         public ObterDadosProdutoHandler(ILogger<ObterDadosProdutoHandler> logger)
         {
-            _produtoAmazonFactory = new ProdutoAmaroFactory();
             _logger = logger;
         }
 
@@ -21,18 +20,24 @@ namespace IGotUScraper.Application.Handlers.ProdutoHandlers.Query
         {
             _logger.LogInformation("Iniciando Handler.");
 
-           // var nomeProduto = ExtrairDadosPath.ObterNomeProduto(request.Url, 8);
+            var empresa = ExtrairDadosPath.ObterNomeEmpresa(request.Url);
 
-            var teste = ExtrairDadosPath.ObterCaminhoBase(request.Url);
+            ProdutoFactory factory = SimpleProdutoFactory.ObterFactory("saraiva");
 
-            _produtoAmazonFactory.obterDadosProduto(request.Url);
-            var result = _produtoAmazonFactory.result();
+            var produto = factory.MontarProduto(request.Url);
 
-            var produto = new ProdutoDto(result?.Titulo, result?.Preco, result?.Descricao, result?.Url);
+            var result = MapearProduto(produto);
 
             _logger.LogInformation("Finalizando Handler.");
 
-            return Task.FromResult(produto);
+            return Task.FromResult(result);
+        }
+
+        private ProdutoDto MapearProduto(FactoryDto factoryDto) 
+        {
+            var produtoDto = new ProdutoDto(factoryDto.Titulo, factoryDto.Preco, factoryDto.Descricao, factoryDto.UrlBase);
+          
+            return produtoDto;
         }
     }
 }
