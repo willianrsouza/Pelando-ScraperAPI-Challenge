@@ -1,10 +1,9 @@
-﻿
-using IGotUScraper.Domain.Entities.ProdutoContext;
+﻿using IGotUScraper.Domain.Entities.ProdutoContext;
 
 namespace IGotUScraper.Domain.Interfaces.Repositories.Database.ProdutoRepository
 {
     public interface IProdutoRepository
     {
-        Task InserirProduto(Produto produto);
+        Task<Produto> ObterPorId(int id);
     }
 }

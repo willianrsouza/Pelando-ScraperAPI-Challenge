@@ -4,5 +4,5 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace IGotUScraper.Application.Handlers.ProdutoHandlers.Query
 {
-    public record ObterDadosProdutoQuery([property: SwaggerSchema("Url do Produto")] string Url) : IRequest<ProdutoDto>;
+    public record ObterProdutoQuery([property: SwaggerSchema("Id Produto")]int Id) : IRequest<ProdutoDto>;
 }

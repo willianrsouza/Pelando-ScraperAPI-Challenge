@@ -10,4 +10,8 @@
     <Folder Include="Interfaces\Repositories\Database\Empresa\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MySqlConnector" Version="2.2.5" />
+  </ItemGroup>
+
 </Project>
