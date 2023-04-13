@@ -1,37 +1,40 @@
 ﻿using HtmlAgilityPack;
+using IGotUScraper.Application.Factory.Dto;
 
 namespace IGotUScraper.Application.Factory
 {
-    public class ProdutoAmaroFactory : ScraperFactory
+    public class ProdutoAmaroFactory : ProdutoFactory
     {
         private readonly HtmlWeb _htmlWeb;
+        private FactoryDto _factoryDto;
 
         public ProdutoAmaroFactory()
         {
             _htmlWeb = new HtmlWeb();
+            _factoryDto = new FactoryDto();
         }
 
-        public override void obterDadosProduto(string url)
+        protected override FactoryDto ObterDados(string url)
         {
-            obterValoresProduto(url);
-            obterDescricaoProduto(url);
+            construirValoresProduto(url);
+            construirDescricaoProduto(url);
 
-            ProdutoFactory.Url = url;
+            return _factoryDto;
         }
 
-        public void obterValoresProduto(string url)
+        private void construirValoresProduto(string url)
         {
             var doc = _htmlWeb.Load(url);
             var valoresProduto = doc.DocumentNode.SelectNodes(xpath: "//*[@id=\"productOptions\"]");
 
             foreach (var item in valoresProduto)
             {
-                ProdutoFactory.Titulo = item.SelectSingleNode("//*[@id=\"productOptions\"]/h1").InnerText;
-                ProdutoFactory.Preco = item.SelectSingleNode("//*[@id=\"productOptions\"]/div[3]/div[1]/strong").InnerText;
+                _factoryDto.Titulo = item.SelectSingleNode("//*[@id=\"productOptions\"]/h1").InnerText;
+                _factoryDto.Preco = item.SelectSingleNode("//*[@id=\"productOptions\"]/div[3]/div[1]/strong").InnerText;
             }
         }
 
-        public void obterDescricaoProduto(string url)
+        private void construirDescricaoProduto(string url)
         {
             var doc = _htmlWeb.Load(url);
 
@@ -39,7 +42,7 @@ namespace IGotUScraper.Application.Factory
 
             foreach (var item in valoresProduto)
             {
-                ProdutoFactory.Descricao = item.SelectSingleNode("/html/body/div/div[1]/div[4]/div[2]/div[1]/div[1]/div/section/div/p[1]/text()").InnerText;
+                _factoryDto.Descricao = item.SelectSingleNode("/html/body/div/div[1]/div[4]/div[2]/div[1]/div[1]/div/section/div/p[1]/text()").InnerText;
             }
         }
     }

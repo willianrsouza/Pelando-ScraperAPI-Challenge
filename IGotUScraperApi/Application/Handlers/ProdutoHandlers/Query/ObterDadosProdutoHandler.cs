@@ -1,26 +1,43 @@
 ﻿using IGotUScraper.Application.Factory;
+using IGotUScraper.Application.Factory.Dto;
 using IGotUScraper.Application.Handlers.ProdutoHandlers.Dto;
+using IGotUScraper.Utilities;
 using MediatR;
+using Microsoft.Extensions.Logging;
 
 namespace IGotUScraper.Application.Handlers.ProdutoHandlers.Query
 {
     public class ObterDadosProdutoHandler : IRequestHandler<ObterDadosProdutoQuery, ProdutoDto>
     {
-        private readonly ScraperFactory _produtoAmazonFactory;
+        private readonly ILogger<ObterDadosProdutoHandler> _logger;
 
-        public ObterDadosProdutoHandler() 
+        public ObterDadosProdutoHandler(ILogger<ObterDadosProdutoHandler> logger)
         {
-            _produtoAmazonFactory = new ProdutoAmaroFactory();
+            _logger = logger;
         }
 
         public Task<ProdutoDto> Handle(ObterDadosProdutoQuery request, CancellationToken cancellationToken)
         {
-            _produtoAmazonFactory.obterDadosProduto(request.Url);
-            var result = _produtoAmazonFactory.result();
+            _logger.LogInformation("Iniciando Handler.");
 
-            var produto = new ProdutoDto(result?.Titulo, result?.Preco, result.Descricao, result.Url);
+            var empresa = ExtrairDadosPath.ObterNomeEmpresa(request.Url);
 
-            return Task.FromResult(produto);
+            ProdutoFactory factory = SimpleProdutoFactory.ObterFactory("saraiva");
+
+            var produto = factory.MontarProduto(request.Url);
+
+            var result = MapearProduto(produto);
+
+            _logger.LogInformation("Finalizando Handler.");
+
+            return Task.FromResult(result);
+        }
+
+        private ProdutoDto MapearProduto(FactoryDto factoryDto) 
+        {
+            var produtoDto = new ProdutoDto(factoryDto.Titulo, factoryDto.Preco, factoryDto.Descricao, factoryDto.UrlBase);
+          
+            return produtoDto;
         }
     }
 }
