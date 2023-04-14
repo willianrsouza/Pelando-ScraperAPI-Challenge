@@ -11,7 +11,7 @@ namespace IGotUScraper.Domain.Base
 
         private Result(T obj) => Object = obj;
 
-        public Result(string message) => Message = message;
+        private Result(string message) => Message = message;
 
         public static Result<T> Ok(T obj) => new Result<T>(obj);
 

@@ -21,11 +21,11 @@ namespace IGotUScraper.Application.Handlers.ProdutoHandlers.Query.ObterProduto
 
         public async Task<IEnumerable<ProdutoDto>> Handle(ObterProdutosQuery request, CancellationToken cancellationToken)
         {
-            _logger.LogInformation("Iniciando Handler ObterProduto.");
+            _logger.LogInformation("Iniciando Handler ObterProdutos.");
 
             var result = await _produtoRepository.ObterProdutos();
 
-            _logger.LogInformation("Finalizando Handler ObterProduto.");
+            _logger.LogInformation("Finalizando Handler ObterProdutos.");
 
             return await Task.FromResult(_mapper.Map<IEnumerable<ProdutoDto>>(result));
         }

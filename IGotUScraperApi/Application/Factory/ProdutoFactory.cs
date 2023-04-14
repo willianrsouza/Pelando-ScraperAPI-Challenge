@@ -12,6 +12,6 @@ namespace IGotUScraper.Application.Factory
             return produto;
         }
 
-        protected abstract ProdutoDto ObterDados(string url);
+        public abstract ProdutoDto ObterDados(string url);
     }
 }

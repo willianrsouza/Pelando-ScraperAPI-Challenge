@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace IGotUScraper.Application.Factory
 {
-    public class SimpleProdutoFactory
+    public class SimpleProdutoFactory : ISimpleProdutoFactory
     {
-        public static ProdutoFactory ObterFactory(string url) 
+        public ProdutoFactory ObterFactory(string url) 
         {
             ProdutoFactory? produto;
 
