@@ -2,6 +2,7 @@
 using IGotUScraper.Application.Handlers.EmpresaHandlers.Dto;
 using IGotUScraper.Domain.Interfaces.Repositories.Database.Empresa;
 using MediatR;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.Extensions.Logging;
 
 namespace IGotUScraper.Application.Handlers.EmpresaHandlers.Query.ObterEmpresa
@@ -22,9 +23,6 @@ namespace IGotUScraper.Application.Handlers.EmpresaHandlers.Query.ObterEmpresa
         public async Task<EmpresaDto> Handle(ObterEmpresaQuery request, CancellationToken cancellationToken)
         {
             _logger.LogInformation("Iniciando Handler ObterProduto.");
-
-            if (request.Id < 1)
-                return await Task.FromException<EmpresaDto>(new Exception("Id inválido."));
 
             var result = await _empresaRepository.ObterEmpresa(request.Id);
 

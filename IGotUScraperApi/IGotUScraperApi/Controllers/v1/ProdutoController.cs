@@ -19,7 +19,7 @@ namespace IGotUScraperApi.Controllers.v1
         private readonly IMediator _mediator;
 
         /// <summary>
-        /// 
+        /// Controller Produto
         /// </summary>
         /// <param name="mediator"></param>
         public ProdutoController(IMediator mediator)
@@ -37,6 +37,9 @@ namespace IGotUScraperApi.Controllers.v1
         [SwaggerOperation(Summary = "Consultar - Cadastras Produto Por 'URL' ", Description = "Consultar - Cadastras dados de um produto.")]
         public async Task<IActionResult> ConsultarProduto([FromBody] ConsultarDadosProdutoCommand query)
         {
+            if (string.IsNullOrEmpty(query.Url))
+                return BadRequest("URL Inválida.");
+
             var resultado = await _mediator.Send(query);
 
             return Ok(resultado);
@@ -48,11 +51,15 @@ namespace IGotUScraperApi.Controllers.v1
         /// <param name="query"></param>
         /// <returns></returns>
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
         [HttpGet("{Id}"), MapToApiVersion("1.0")]
         [SwaggerOperation(Summary = "Obter Produto", Description = "Obtém produto por Id.")]
         public async Task<IActionResult> ObterProduto([FromRoute] ObterProdutoQuery query)
         {
+            if (query.Id < 1)
+                return BadRequest("Id Inválido");
+
             var result = await _mediator.Send(query);
 
             return Ok(result);
