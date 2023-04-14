@@ -17,7 +17,7 @@ namespace IGotUScraper.Application.Mapper
               .ConstructUsing((src, opt) => new EmpresaDto(src.Id, src.Nome, src.UrlBase));
 
             CreateMap<ProdutoDto, ProdutoEntity>()
-             .ConstructUsing((src, opt) => new ProdutoEntity(0, src.Titulo, src.Imagem, src.Preco, src.Descricao, src.Url, DateTime.Now));
+             .ConstructUsing((src, opt) => new ProdutoEntity(0, src?.Titulo, src?.Imagem, src.Preco, src?.Descricao, src?.Url, DateTime.Now));
         }
     }
 }

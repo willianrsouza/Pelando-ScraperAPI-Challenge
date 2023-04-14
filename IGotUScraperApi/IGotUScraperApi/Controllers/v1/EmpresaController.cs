@@ -36,6 +36,9 @@ namespace IGotUScraperApi.Controllers.v1
         [SwaggerOperation(Summary = "Obter Empresa Por Id", Description = "Obtém empresa cadastrada por Id.")]
         public async Task<IActionResult> ObterEmpresa([FromRoute] ObterEmpresaQuery query)
         {
+            if(query.Id < 1)
+              return BadRequest("Id Inválido");
+
             var result = await _mediator.Send(query);
 
             return Ok(result);

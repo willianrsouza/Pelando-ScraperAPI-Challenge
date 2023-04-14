@@ -16,7 +16,7 @@ namespace IGotUScraper.Application.Factory
             _produtoDto = new ProdutoDto();
         }
 
-        protected override ProdutoDto ObterDados(string url)
+        public override ProdutoDto ObterDados(string url)
         {
             var document = _htmlWeb.Load(url);
 

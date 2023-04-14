@@ -23,7 +23,7 @@ namespace IGotUScraper.Utilities
 
         public static string ImagemSite(HtmlNodeCollection node, string SectionUm, string SectionDois)
         {
-            var result = node.Descendants(SectionUm)
+            var result = node?.Descendants(SectionUm)
                                .Select(e => e.GetAttributeValue(SectionDois, null))
                                .Where(s => !String.IsNullOrEmpty(s)).FirstOrDefault();
 

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using IGotUScraper.Application.Factory;
 using IGotUScraper.Application.Mapper;
 using IGotUScraper.Domain.Interfaces.Repositories.Database.Empresa;
 using IGotUScraper.Domain.Interfaces.Repositories.Database.Produto;
@@ -16,6 +17,7 @@ namespace IGotUScraperApi.DependencyInjection
             RegisterCommonTypes(services);
             RegisterRepositories(services);
             RegisterInfrastructureTypes(services);
+            RegisterApplication(services);
             RegisterAutoMapper(services);
         }
 
@@ -38,6 +40,16 @@ namespace IGotUScraperApi.DependencyInjection
                 cfg.AddProfile(new AutoMapperRepositoryProfile());
 
             }).CreateMapper());
+        }
+
+        /// <summary>
+        /// Realizando a Injeção de Dependencia (Responsavel pela Inversão de Controle)
+        /// Contexto: Repository
+        /// </summary>
+        /// <param name="services"></param>
+        private static void RegisterApplication(IServiceCollection services)
+        {
+            services.AddScoped<ISimpleProdutoFactory, SimpleProdutoFactory>();
         }
 
 
