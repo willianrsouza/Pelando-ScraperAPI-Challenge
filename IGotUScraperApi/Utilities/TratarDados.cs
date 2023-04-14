@@ -11,8 +11,6 @@ namespace IGotUScraper.Utilities
             string result = String.Join("", Regex.Split(input, @"[R$]"))
                 .Replace(input, "").Trim();
 
-            //var converter = Double.Parse(result);
-
             return result;
         }
 

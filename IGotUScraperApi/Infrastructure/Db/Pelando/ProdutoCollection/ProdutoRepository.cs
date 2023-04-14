@@ -48,8 +48,8 @@ namespace IGotUScraper.Infrastructure.Db.Pelando.ProdutoCollection
 
         public const string SQL_INSERIR_PRODUTO = @"INSERT INTO produto
                                                             (ID_EMPRESA,
-                                                                TITULO AS Titulo,,
-                                                                IMAGEM AS IdEmpresa,,
+                                                                TITULO,
+                                                                IMAGEM,
                                                                 DESCRICAO,
                                                                 URL,
                                                                 DT_EXTRACT,
