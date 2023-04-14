@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
 using IGotUScraper.Application.Mapper;
-using IGotUScraper.Domain.Interfaces.Repositories.Database.ProdutoRepository;
+using IGotUScraper.Domain.Interfaces.Repositories.Database.Empresa;
+using IGotUScraper.Domain.Interfaces.Repositories.Database.Produto;
 using IGotUScraper.Infrastructure.Base;
-using IGotUScraper.Infrastructure.Db.Pelando.ProdutoRepository;
-using MySqlConnector;
+using IGotUScraper.Infrastructure.Db.Pelando.EmpresaCollection;
+using IGotUScraper.Infrastructure.Db.Pelando.ProdutoCollection;
 
 namespace IGotUScraperApi.DependencyInjection
 {
@@ -55,7 +56,7 @@ namespace IGotUScraperApi.DependencyInjection
         private static void RegisterRepositories(IServiceCollection services)
         {
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
-
+            services.AddScoped<IEmpresaRepository, EmpresaRepository>();
         }
     }
 }

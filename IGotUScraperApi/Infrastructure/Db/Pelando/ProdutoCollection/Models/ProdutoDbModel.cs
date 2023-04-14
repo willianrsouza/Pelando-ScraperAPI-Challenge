@@ -6,7 +6,7 @@
         public int IdEmpresa { get; set; }
         public string? Titulo { get; set; }
         public string? Imagem { get; set; }
-        public double Preco { get; set; }
+        public string Preco { get; set; }
         public string? Descricao { get; set; }
         public string? UrlComplementar { get; set; }
         public DateTime DataExtracao { get; set; }

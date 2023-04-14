@@ -1,25 +1,26 @@
 ﻿using HtmlAgilityPack;
-using IGotUScraper.Application.Factory.Dto;
+using IGotUScraper.Application.Handlers.ProdutoHandlers.Dto;
+using IGotUScraper.Utilities;
 
 namespace IGotUScraper.Application.Factory
 {
     public class ProdutoAmaroFactory : ProdutoFactory
     {
         private readonly HtmlWeb _htmlWeb;
-        private FactoryDto _factoryDto;
+        private ProdutoDto _produtoDto;
 
         public ProdutoAmaroFactory()
         {
             _htmlWeb = new HtmlWeb();
-            _factoryDto = new FactoryDto();
+            _produtoDto = new ProdutoDto();
         }
 
-        protected override FactoryDto ObterDados(string url)
+        protected override ProdutoDto ObterDados(string url)
         {
             construirValoresProduto(url);
             construirDescricaoProduto(url);
 
-            return _factoryDto;
+            return _produtoDto;
         }
 
         private void construirValoresProduto(string url)
@@ -29,8 +30,8 @@ namespace IGotUScraper.Application.Factory
 
             foreach (var item in valoresProduto)
             {
-                _factoryDto.Titulo = item.SelectSingleNode("//*[@id=\"productOptions\"]/h1").InnerText;
-                _factoryDto.Preco = item.SelectSingleNode("//*[@id=\"productOptions\"]/div[3]/div[1]/strong").InnerText;
+                _produtoDto.Titulo = item.SelectSingleNode("//*[@id=\"productOptions\"]/h1").InnerText;
+                _produtoDto.Preco = TratarDados.SomenteNumero(item.SelectSingleNode("//*[@id=\"productOptions\"]/div[3]/div[1]/strong").InnerText);
             }
         }
 
@@ -42,7 +43,7 @@ namespace IGotUScraper.Application.Factory
 
             foreach (var item in valoresProduto)
             {
-                _factoryDto.Descricao = item.SelectSingleNode("/html/body/div/div[1]/div[4]/div[2]/div[1]/div[1]/div/section/div/p[1]/text()").InnerText;
+                _produtoDto.Descricao = item.SelectSingleNode("/html/body/div/div[1]/div[4]/div[2]/div[1]/div[1]/div/section/div/p[1]/text()").InnerText;
             }
         }
     }

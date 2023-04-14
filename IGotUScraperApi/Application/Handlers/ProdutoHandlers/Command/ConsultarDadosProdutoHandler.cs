@@ -1,9 +1,8 @@
-﻿using IGotUScraper.Application.Factory;
-using IGotUScraper.Application.Factory.Dto;
+﻿using AutoMapper;
+using IGotUScraper.Application.Factory;
 using IGotUScraper.Application.Handlers.ProdutoHandlers.Dto;
 using IGotUScraper.Domain.Entities.ProdutoContext;
-using IGotUScraper.Domain.Interfaces.Repositories.Database.ProdutoRepository;
-using IGotUScraper.Utilities;
+using IGotUScraper.Domain.Interfaces.Repositories.Database.Produto;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
@@ -12,11 +11,13 @@ namespace IGotUScraper.Application.Handlers.ProdutoHandlers.Command
     public class ConsultarDadosProdutoHandler : IRequestHandler<ConsultarDadosProdutoCommand, ProdutoDto>
     {
         private readonly ILogger<ConsultarDadosProdutoHandler> _logger;
+        private readonly IMapper _mapper;
         private readonly IProdutoRepository _produtoRepository;
 
-        public ConsultarDadosProdutoHandler(ILogger<ConsultarDadosProdutoHandler> logger, IProdutoRepository produtoRepository)
+        public ConsultarDadosProdutoHandler(ILogger<ConsultarDadosProdutoHandler> logger, IMapper mapper, IProdutoRepository produtoRepository)
         {
             _logger = logger;
+            _mapper = mapper;
             _produtoRepository = produtoRepository;
         }
 
@@ -24,19 +25,14 @@ namespace IGotUScraper.Application.Handlers.ProdutoHandlers.Command
         {
             _logger.LogInformation("Iniciando Handler.");
 
-            ProdutoFactory factory = SimpleProdutoFactory.ObterFactory("saraiva");
+            var factory = SimpleProdutoFactory.ObterFactory("saraiva");
             var produto = factory.MontarProduto(request.Url);
 
-            var result = MapearProduto(produto);
+            await _produtoRepository.Inserir(_mapper.Map<ProdutoEntity>(produto), 2);
 
             _logger.LogInformation("Finalizando Handler.");
 
-            return await Task.FromResult(result);
-        }
-
-        private ProdutoDto MapearProduto(FactoryDto factoryDto)
-        {
-            return new ProdutoDto(factoryDto.Titulo, "", 50, factoryDto.Descricao, factoryDto.UrlBase); ;
+            return await Task.FromResult(produto);
         }
     }
 }

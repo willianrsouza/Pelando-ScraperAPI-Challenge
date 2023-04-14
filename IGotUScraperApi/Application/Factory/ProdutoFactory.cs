@@ -1,17 +1,17 @@
-﻿using IGotUScraper.Application.Factory.Dto;
+﻿using IGotUScraper.Application.Handlers.ProdutoHandlers.Dto;
 
 namespace IGotUScraper.Application.Factory
 {
     public abstract class ProdutoFactory
     {
-        public FactoryDto MontarProduto(string url)
+        public ProdutoDto MontarProduto(string url)
         {
-            FactoryDto produto;
+            ProdutoDto produto;
             produto = ObterDados(url);
 
             return produto;
         }
 
-        protected abstract FactoryDto ObterDados(string url);
+        protected abstract ProdutoDto ObterDados(string url);
     }
 }

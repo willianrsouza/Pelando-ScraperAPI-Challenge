@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
 using IGotUScraper.Application.Handlers.ProdutoHandlers.Dto;
-using IGotUScraper.Domain.Interfaces.Repositories.Database.ProdutoRepository;
+using IGotUScraper.Domain.Interfaces.Repositories.Database.Produto;
 using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.Extensions.Logging;
 
 namespace IGotUScraper.Application.Handlers.ProdutoHandlers.Query
@@ -26,9 +25,11 @@ namespace IGotUScraper.Application.Handlers.ProdutoHandlers.Query
 
             var produto = await _produtoRepository.ObterPorId(request.Id);
 
+            var result = _mapper.Map<ProdutoDto>(produto);
+
             _logger.LogInformation("Finalizando Handler ObterProduto.");
 
-            return await Task.FromResult(_mapper.Map<ProdutoDto>(produto));
+            return await Task.FromResult<ProdutoDto>(result);
         }
     }
 }

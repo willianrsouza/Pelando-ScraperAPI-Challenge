@@ -1,21 +1,29 @@
 ﻿using Dapper;
-using IGotUScraper.Domain.Entities.ProdutoContext;
-using IGotUScraper.Domain.Interfaces.Repositories.Database.ProdutoRepository;
+using IGotUScraper.Domain.Entities.EmpresaContext;
+using IGotUScraper.Domain.Interfaces.Repositories.Database.Empresa;
 using IGotUScraper.Infrastructure.Base;
+using IGotUScraper.Infrastructure.Db.Pelando.Empresa.Models;
 using IGotUScraper.Infrastructure.Db.Pelando.ProdutoRepository.Models;
 using System.Data;
 
-namespace IGotUScraper.Infrastructure.Db.Pelando.ProdutoRepository
+namespace IGotUScraper.Infrastructure.Db.Pelando.EmpresaCollection
 {
-    public class ProdutoRepository : IProdutoRepository
+    public class EmpresaRepository : IEmpresaRepository
     {
 
         private readonly IConnectionFactory _connectionFactory;
 
-        public ProdutoRepository(IConnectionFactory connectionFactory) 
+        public EmpresaRepository(IConnectionFactory connectionFactory)
         {
             _connectionFactory = connectionFactory;
         }
+
+        private const string SQL_OBTER_EMPRESA_POR_ID = @"SELECT 
+                                                        e.ID AS Id,
+                                                        e.NOME AS Nome,
+                                                        e.URL_BASE AS UrlBase
+                                                        FROM EMPRESA e 
+                                                        WHERE e.ID = @id";
 
         private const string SQL_OBTER_PRODUTO_POR_ID = @"SELECT 
                                                         p.ID AS Id,
@@ -28,20 +36,17 @@ namespace IGotUScraper.Infrastructure.Db.Pelando.ProdutoRepository
                                                         p.DT_EXTRACT AS DataExtracao
                                                         FROM PRODUTO p 
                                                         WHERE P.ID = @id";
-
-
-
-        public async Task<Produto> ObterPorId(int id)
+        public async Task<EmpresaEntity> ObterEmpresa(int id)
         {
             using var connection = _connectionFactory.CreatePelandoDbConnection();
 
             var parametros = new DynamicParameters();
             parametros.Add("@id", id, DbType.Int32);
 
-            var result = await connection.QueryFirstOrDefaultAsync<ProdutoDbModel>(SQL_OBTER_PRODUTO_POR_ID, parametros);
+            var result = await connection.QueryFirstOrDefaultAsync<EmpresaDbModel>(SQL_OBTER_EMPRESA_POR_ID, parametros);
 
-            return new Produto(result.Id, result.Titulo, result.Imagem, result.Preco, result.Descricao, result.UrlComplementar, result.DataExtracao); 
-        }  
-    } 
+            return new EmpresaEntity(result.Id, result.Nome, result.UrlBase);
+        }
+  
+    }
 }
- 
