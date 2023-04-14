@@ -19,13 +19,6 @@ namespace IGotUScraper.Utilities
             return LimparCaracteres(url);
         }
 
-        public static string ObterCaminhoBase(string caminho)
-        {
-            var uri = new UriBuilder(caminho).Uri;
-
-            return uri.Authority;
-        }
-
         public static string LimparCaracteres(string caracteres) 
         {
             return Regex.Replace(caracteres, @"[^/A-z]+", String.Empty)

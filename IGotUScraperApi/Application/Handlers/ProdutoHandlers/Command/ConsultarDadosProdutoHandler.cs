@@ -30,19 +30,19 @@ namespace IGotUScraper.Application.Handlers.ProdutoHandlers.Command
             if (string.IsNullOrEmpty(request.Url))
                 return await Task.FromException<ProdutoDto>(new Exception("A 'URL' é inválida."));
 
-            //buscar produto no banco com a url
+            var produtoCadastrado = await _produtoRepository.ObterProdutoPorUrl(request.Url);
 
+            if (produtoCadastrado != null)
+                return await Task.FromResult(_mapper.Map<ProdutoDto>(produtoCadastrado)); 
 
-            var empresa = ExtrairDadosPath.ObterNomeEmpresa(request.Url);
+            var factory = SimpleProdutoFactory.ObterFactory(request.Url);
+            var produtoFactory = factory.MontarProduto(request.Url);
 
-            var factory = SimpleProdutoFactory.ObterFactory(empresa);
-            var produto = factory.MontarProduto(request.Url);
-
-            await _produtoRepository.Inserir(_mapper.Map<ProdutoEntity>(produto), 2);
+            await _produtoRepository.Inserir(_mapper.Map<ProdutoEntity>(produtoFactory), 2);
 
             _logger.LogInformation("Finalizando Handler.");
 
-            return await Task.FromResult(produto);
+            return await Task.FromResult(produtoFactory);
         }
     }
 }

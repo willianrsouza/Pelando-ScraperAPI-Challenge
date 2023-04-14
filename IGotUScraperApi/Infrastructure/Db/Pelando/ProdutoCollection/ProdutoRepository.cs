@@ -1,4 +1,6 @@
-﻿using Dapper;
+﻿using AutoMapper;
+using Dapper;
+using IGotUScraper.Domain.Base;
 using IGotUScraper.Domain.Entities.ProdutoContext;
 using IGotUScraper.Domain.Interfaces.Repositories.Database.Produto;
 using IGotUScraper.Infrastructure.Base;
@@ -11,10 +13,12 @@ namespace IGotUScraper.Infrastructure.Db.Pelando.ProdutoCollection
     {
 
         private readonly IConnectionFactory _connectionFactory;
+        private readonly IMapper _mapper;
 
-        public ProdutoRepository(IConnectionFactory connectionFactory)
+        public ProdutoRepository(IConnectionFactory connectionFactory, IMapper mapper)
         {
             _connectionFactory = connectionFactory;
+            _mapper = mapper;
         }
 
         private const string SQL_OBTER_PRODUTO_POR_ID = @"SELECT 
@@ -31,12 +35,21 @@ namespace IGotUScraper.Infrastructure.Db.Pelando.ProdutoCollection
 
 
 
+        private const string SQL_OBTER_PRODUTO_ATUALIZADO = @"SELECT 
+                                                            p.TITULO AS Titulo, 
+                                                            p.IMAGEM As Imagem,
+                                                            p.PRECO AS Preco, 
+                                                            p.DESCRICAO AS Descricao, 
+                                                            p.URL AS Url
+                                                            FROM PRODUTO p
+                                                            WHERE p.URL LIKE @url
+                                                            AND p.DT_EXTRACT < @datenow - INTERVAL 1 HOUR";
 
 
         public const string SQL_INSERIR_PRODUTO = @"INSERT INTO produto
                                                             (ID_EMPRESA,
-                                                                TITULO,
-                                                                IMAGEM,
+                                                                TITULO AS Titulo,,
+                                                                IMAGEM AS IdEmpresa,,
                                                                 DESCRICAO,
                                                                 URL,
                                                                 DT_EXTRACT,
@@ -50,6 +63,7 @@ namespace IGotUScraper.Infrastructure.Db.Pelando.ProdutoCollection
                                                                 @dtExtract, 
                                                                 @preco)";
 
+   
 
         public async Task<ProdutoEntity> ObterPorId(int id)
         {
@@ -60,14 +74,26 @@ namespace IGotUScraper.Infrastructure.Db.Pelando.ProdutoCollection
 
             var result = await connection.QueryFirstOrDefaultAsync<ProdutoDbModel>(SQL_OBTER_PRODUTO_POR_ID, parametros);
 
-            return new ProdutoEntity(result.Id, result?.Titulo, result?.Imagem, result?.Preco, result?.Descricao, result?.Url, result.DataExtracao);
+            return _mapper.Map<ProdutoEntity>(result);
+        }
+
+        public async Task<ProdutoEntity> ObterProdutoPorUrl(string url)
+        {
+            using var connection = _connectionFactory.CreatePelandoDbConnection();
+            var parametros = new DynamicParameters();
+
+            parametros.Add("@url", url, DbType.Int32);
+            parametros.Add("@datenow", DateTime.Now, DbType.DateTime);
+
+            var result = await connection.QueryFirstOrDefaultAsync<ProdutoDbModel>(SQL_OBTER_PRODUTO_ATUALIZADO, parametros);
+
+            return _mapper.Map<ProdutoEntity>(result);  
         }
 
         public async Task Inserir(ProdutoEntity produto, int idEmpresa)
         {
             using var connection = _connectionFactory.CreatePelandoDbConnection();
             var parametros = new DynamicParameters();
-
             parametros.Add("@idEmpresa", idEmpresa, DbType.Int32);
             parametros.Add("@titulo", produto.Titulo, DbType.String);
             parametros.Add("@imagem", produto.Imagem, DbType.String);

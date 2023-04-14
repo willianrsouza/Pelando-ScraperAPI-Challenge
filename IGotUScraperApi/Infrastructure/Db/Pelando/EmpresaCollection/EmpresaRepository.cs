@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using AutoMapper;
+using Dapper;
 using IGotUScraper.Domain.Entities.EmpresaContext;
 using IGotUScraper.Domain.Interfaces.Repositories.Database.Empresa;
 using IGotUScraper.Infrastructure.Base;
@@ -12,10 +13,11 @@ namespace IGotUScraper.Infrastructure.Db.Pelando.EmpresaCollection
     {
 
         private readonly IConnectionFactory _connectionFactory;
-
-        public EmpresaRepository(IConnectionFactory connectionFactory)
+        private readonly IMapper _mapper;
+        public EmpresaRepository(IConnectionFactory connectionFactory, IMapper mapper)
         {
             _connectionFactory = connectionFactory;
+            _mapper = mapper;
         }
 
         private const string SQL_OBTER_EMPRESA_POR_ID = @"SELECT 
@@ -24,6 +26,7 @@ namespace IGotUScraper.Infrastructure.Db.Pelando.EmpresaCollection
                                                         e.URL_BASE AS UrlBase
                                                         FROM EMPRESA e 
                                                         WHERE e.ID = @id";
+
 
         public async Task<EmpresaEntity> ObterEmpresa(int id)
         {
@@ -34,8 +37,7 @@ namespace IGotUScraper.Infrastructure.Db.Pelando.EmpresaCollection
 
             var result = await connection.QueryFirstOrDefaultAsync<EmpresaDbModel>(SQL_OBTER_EMPRESA_POR_ID, parametros);
 
-            return new EmpresaEntity(result.Id, result?.Nome, result?.UrlBase);
+            return _mapper.Map<EmpresaEntity>(result);
         }
-  
     }
 }
