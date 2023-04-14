@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using IGotUScraper.Application.Factory;
+using IGotUScraper.Application.Handlers.EmpresaHandlers.Dto;
 using IGotUScraper.Application.Handlers.ProdutoHandlers.Dto;
 using IGotUScraper.Domain.Entities.ProdutoContext;
 using IGotUScraper.Domain.Interfaces.Repositories.Database.Produto;
+using IGotUScraper.Utilities;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
@@ -25,7 +27,15 @@ namespace IGotUScraper.Application.Handlers.ProdutoHandlers.Command
         {
             _logger.LogInformation("Iniciando Handler.");
 
-            var factory = SimpleProdutoFactory.ObterFactory("saraiva");
+            if (string.IsNullOrEmpty(request.Url))
+                return await Task.FromException<ProdutoDto>(new Exception("A 'URL' é inválida."));
+
+            //buscar produto no banco com a url
+
+
+            var empresa = ExtrairDadosPath.ObterNomeEmpresa(request.Url);
+
+            var factory = SimpleProdutoFactory.ObterFactory(empresa);
             var produto = factory.MontarProduto(request.Url);
 
             await _produtoRepository.Inserir(_mapper.Map<ProdutoEntity>(produto), 2);

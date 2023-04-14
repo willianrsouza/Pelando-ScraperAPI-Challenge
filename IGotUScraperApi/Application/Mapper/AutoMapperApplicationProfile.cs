@@ -11,13 +11,13 @@ namespace IGotUScraper.Application.Mapper
         public AutoMapperApplicationProfile()
         {
             CreateMap<ProdutoEntity, ProdutoDto>()
-             .ConstructUsing((src, opt) => new ProdutoDto(src.Titulo, src.Imagem, src.Preco, src.Descricao, src.UrlComplementar));
+             .ConstructUsing((src, opt) => new ProdutoDto(src.Titulo, src.Imagem, src.Preco, src.Descricao, src.Url));
 
             CreateMap<EmpresaEntity, EmpresaDto>()
               .ConstructUsing((src, opt) => new EmpresaDto(src.Id, src.Nome, src.UrlBase));
 
             CreateMap<ProdutoDto, ProdutoEntity>()
-             .ConstructUsing((src, opt) => new ProdutoEntity(0, src.Titulo, src.Imagem, src.Preco, src.Descricao, src.UrlBase, DateTime.Now));
+             .ConstructUsing((src, opt) => new ProdutoEntity(0, src.Titulo, src.Imagem, src.Preco, src.Descricao, src.Url, DateTime.Now));
         }
     }
 }

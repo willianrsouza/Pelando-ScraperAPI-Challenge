@@ -24,7 +24,7 @@ namespace IGotUScraper.Infrastructure.Db.Pelando.ProdutoCollection
                                                         p.IMAGEM AS Imagem,
                                                         p.PRECO AS Preco, 
                                                         p.DESCRICAO AS Descricao,
-                                                        p.URL_COMPLEMENTAR AS UrlComplementar,
+                                                        p.URL AS Url,
                                                         p.DT_EXTRACT AS DataExtracao
                                                         FROM PRODUTO p 
                                                         WHERE P.ID = @id";
@@ -38,20 +38,17 @@ namespace IGotUScraper.Infrastructure.Db.Pelando.ProdutoCollection
                                                                 TITULO,
                                                                 IMAGEM,
                                                                 DESCRICAO,
-                                                                URL_COMPLEMENTAR,
+                                                                URL,
                                                                 DT_EXTRACT,
-                                                                VALOR)
+                                                                PRECO)
                                                                 VALUES(
                                                                 @idEmpresa,
                                                                 @titulo,
                                                                 @imagem, 
                                                                 @descricao,
-                                                                @urlComplementar,
+                                                                @url,
                                                                 @dtExtract, 
-                                                                @valor)";
-
-
-
+                                                                @preco)";
 
 
         public async Task<ProdutoEntity> ObterPorId(int id)
@@ -63,7 +60,7 @@ namespace IGotUScraper.Infrastructure.Db.Pelando.ProdutoCollection
 
             var result = await connection.QueryFirstOrDefaultAsync<ProdutoDbModel>(SQL_OBTER_PRODUTO_POR_ID, parametros);
 
-            return new ProdutoEntity(result.Id, result.Titulo, result.Imagem, result.Preco, result.Descricao, result.UrlComplementar, result.DataExtracao);
+            return new ProdutoEntity(result.Id, result?.Titulo, result?.Imagem, result?.Preco, result?.Descricao, result?.Url, result.DataExtracao);
         }
 
         public async Task Inserir(ProdutoEntity produto, int idEmpresa)
@@ -75,9 +72,9 @@ namespace IGotUScraper.Infrastructure.Db.Pelando.ProdutoCollection
             parametros.Add("@titulo", produto.Titulo, DbType.String);
             parametros.Add("@imagem", produto.Imagem, DbType.String);
             parametros.Add("@descricao", produto.Descricao, DbType.String);
-            parametros.Add("@urlComplementar", produto.UrlComplementar, DbType.String);
+            parametros.Add("@url", produto.Url, DbType.String);
             parametros.Add("@dtExtract", DateTime.Now, DbType.DateTime);
-            parametros.Add("@valor", produto.Preco, DbType.String);
+            parametros.Add("@preco", produto.Preco, DbType.String);
 
             await connection.QueryAsync<int>(SQL_INSERIR_PRODUTO, parametros);
         }

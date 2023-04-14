@@ -22,8 +22,7 @@ namespace IGotUScraper.Application.Factory
             obterValoresProduto(document);
             obterDescricaoProduto(document);
             obterImagemProduto(document);
-
-            _produtoDto.UrlBase = url;
+            _produtoDto.Url = url;
 
             return _produtoDto;
         }

@@ -25,17 +25,6 @@ namespace IGotUScraper.Infrastructure.Db.Pelando.EmpresaCollection
                                                         FROM EMPRESA e 
                                                         WHERE e.ID = @id";
 
-        private const string SQL_OBTER_PRODUTO_POR_ID = @"SELECT 
-                                                        p.ID AS Id,
-                                                        p.ID_EMPRESA AS IdEmpresa,
-                                                        p.TITULO AS Titulo,
-                                                        p.IMAGEM AS Imagem,
-                                                        p.PRECO AS Preco, 
-                                                        p.DESCRICAO AS Descricao,
-                                                        p.URL_COMPLEMENTAR AS UrlComplementar,
-                                                        p.DT_EXTRACT AS DataExtracao
-                                                        FROM PRODUTO p 
-                                                        WHERE P.ID = @id";
         public async Task<EmpresaEntity> ObterEmpresa(int id)
         {
             using var connection = _connectionFactory.CreatePelandoDbConnection();
@@ -45,7 +34,7 @@ namespace IGotUScraper.Infrastructure.Db.Pelando.EmpresaCollection
 
             var result = await connection.QueryFirstOrDefaultAsync<EmpresaDbModel>(SQL_OBTER_EMPRESA_POR_ID, parametros);
 
-            return new EmpresaEntity(result.Id, result.Nome, result.UrlBase);
+            return new EmpresaEntity(result.Id, result?.Nome, result?.UrlBase);
         }
   
     }
