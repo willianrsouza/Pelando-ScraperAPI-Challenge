@@ -19,7 +19,7 @@ namespace IGotUScraperApi.Controllers.v1
         private readonly IMediator _mediator;
 
         /// <summary>
-        /// 
+        /// Controller Produto
         /// </summary>
         /// <param name="mediator"></param>
         public ProdutoController(IMediator mediator)
@@ -51,6 +51,7 @@ namespace IGotUScraperApi.Controllers.v1
         /// <param name="query"></param>
         /// <returns></returns>
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
         [HttpGet("{Id}"), MapToApiVersion("1.0")]
         [SwaggerOperation(Summary = "Obter Produto", Description = "Obtém produto por Id.")]

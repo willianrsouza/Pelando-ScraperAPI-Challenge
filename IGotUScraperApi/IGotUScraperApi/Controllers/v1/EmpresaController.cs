@@ -7,7 +7,7 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace IGotUScraperApi.Controllers.v1
 {
     /// <summary>
-    /// Controller de Produto
+    /// Controller da Empresa
     /// </summary>
     [ApiController]
     [ApiVersion("1.0")]
@@ -16,10 +16,7 @@ namespace IGotUScraperApi.Controllers.v1
     {
         private readonly IMediator _mediator;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="mediator"></param>
+
         public EmpresaController(IMediator mediator)
         {
             _mediator = mediator;
@@ -31,6 +28,7 @@ namespace IGotUScraperApi.Controllers.v1
         /// <param name="query"></param>
         /// <returns></returns>
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
         [HttpGet("{Id}"), MapToApiVersion("1.0")]
         [SwaggerOperation(Summary = "Obter Empresa Por Id", Description = "Obtém empresa cadastrada por Id.")]
