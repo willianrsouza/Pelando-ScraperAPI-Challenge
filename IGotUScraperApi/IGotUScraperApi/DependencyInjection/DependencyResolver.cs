@@ -5,6 +5,7 @@ using IGotUScraper.Domain.Interfaces.Repositories.Database.Produto;
 using IGotUScraper.Infrastructure.Base;
 using IGotUScraper.Infrastructure.Db.Pelando.EmpresaCollection;
 using IGotUScraper.Infrastructure.Db.Pelando.ProdutoCollection;
+using IGotUScraper.Infrastructure.Mapper;
 
 namespace IGotUScraperApi.DependencyInjection
 {
@@ -34,6 +35,8 @@ namespace IGotUScraperApi.DependencyInjection
             services.AddSingleton(new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new AutoMapperApplicationProfile());
+                cfg.AddProfile(new AutoMapperRepositoryProfile());
+
             }).CreateMapper());
         }
 

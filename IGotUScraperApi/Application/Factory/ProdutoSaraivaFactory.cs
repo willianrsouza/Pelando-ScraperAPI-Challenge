@@ -23,7 +23,7 @@ namespace IGotUScraper.Application.Factory
             obterDescricaoProduto(document);
             obterImagemProduto(document);
 
-            _produtoDto.UrlBase = url;
+            _produtoDto.Url = url;
 
             return _produtoDto;
         }
@@ -36,7 +36,7 @@ namespace IGotUScraper.Application.Factory
             foreach (var item in valoresProduto)
             {
                 _produtoDto.Titulo = item.SelectSingleNode("/html/body/div[2]/div/div[1]/div/div/div/div[4]/div/div[1]/div[2]/section/div/div[2]/div/div/div/div[1]/div/div/div/h1/span").InnerText;
-                _produtoDto.Preco = TratarDados.SomenteNumero(item.SelectSingleNode("/html/body/div[2]/div/div[1]/div/div/div/div[4]/div/div[1]/div[2]/section/div/div[2]/div/div/div/div[4]/div/div/div[1]/div/div/div[2]/span/span/span").InnerText);
+                _produtoDto.Preco = item.SelectSingleNode("/html/body/div[2]/div/div[1]/div/div/div/div[4]/div/div[1]/div[2]/section/div/div[2]/div/div/div/div[4]/div/div/div[1]/div/div/div[2]/span/span/span").InnerText;
             }
         }
 
@@ -53,9 +53,10 @@ namespace IGotUScraper.Application.Factory
 
         private void obterImagemProduto(HtmlDocument document)
         {
-            _produtoDto.Imagem = document.DocumentNode.Descendants("img")
-                                .Select(e => e.GetAttributeValue("src", null))
-                                .Where(s => !String.IsNullOrEmpty(s)).FirstOrDefault();
+            var node = document.DocumentNode.SelectNodes(xpath: "/html/body/div[2]/div/div[1]/div/div/div/div[4]/div/div[1]/div[2]/section/div/div[1]/div/div/div/div[1]/div/div/div[1]/div/div/div[2]/div/div[1]/div/div/div/div");
+           
+            _produtoDto.Imagem = ExtrairDados.ImagemSite(node, "img", "src");
+
         }
     }
 }
