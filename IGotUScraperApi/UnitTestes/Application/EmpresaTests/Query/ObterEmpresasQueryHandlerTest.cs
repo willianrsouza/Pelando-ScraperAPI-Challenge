@@ -29,10 +29,11 @@ namespace IGotUScraper.Api.UnitTests.Application.EmpresaTests.Query
             var empresaX = new EmpresaEntity(1, "Nome", "UrlBase");
             var empresaY = new EmpresaEntity(1, "Nome", "UrlBase");
 
-            var empresaEntity = new List<EmpresaEntity>();
-
-            empresaEntity.Add(empresaX);
-            empresaEntity.Add(empresaY);
+            var empresaEntity = new List<EmpresaEntity>
+            {
+                empresaX,
+                empresaY
+            };
 
             var obterHandler = ObterHandler();
 

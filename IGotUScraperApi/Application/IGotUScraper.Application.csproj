@@ -30,8 +30,4 @@
     <ProjectReference Include="..\Utilities\IGotUScraper.Utilities.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Handlers\EmpresaHandlers\Command\" />
-  </ItemGroup>
-
 </Project>
