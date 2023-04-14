@@ -7,6 +7,10 @@
 ## Retorno da Funcionalidade Principal:
 
 ![App Screenshot](https://i.ibb.co/jJQR131/Response.png)
+
+## Visão geral da Arquitetura:
+
+![App Screenshot](https://i.ibb.co/WGbGVyP/overview.png)
 ## Sites Utilizados Para a Extração de Dados (Até o momento)
 
 - Amaro: https://amaro.com/
