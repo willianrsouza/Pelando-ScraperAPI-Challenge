@@ -52,7 +52,7 @@ namespace IGotUScraper.Infrastructure.Db.Pelando.ProdutoCollection
                                                             p.URL AS Url
                                                             FROM PRODUTO p
                                                             WHERE p.URL LIKE @url
-                                                            AND p.DT_EXTRACT < @datenow - INTERVAL 1 HOUR";
+                                                            AND p.DT_EXTRACT >= NOW() - INTERVAL 1 HOUR";
 
         public const string SQL_INSERIR_PRODUTO = @"INSERT INTO produto
                                                             (ID_EMPRESA,

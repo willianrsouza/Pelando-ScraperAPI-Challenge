@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics.CodeAnalysis;
 
 namespace IGotUScraperApi.Startup.VersionamentoApi
 {
+    [ExcludeFromCodeCoverage]
     public static class ApiVersionExtension
     {
         public static void ConfigureApiVersion(this IServiceCollection services)
