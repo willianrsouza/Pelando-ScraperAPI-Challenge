@@ -28,7 +28,7 @@ namespace IGotUScraperApi.Controllers.v1
         }
 
         /// <summary>
-        /// Consultar - Cadastras Produto
+        /// Consultar - Cadastras Produto Por 'URL' 
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>

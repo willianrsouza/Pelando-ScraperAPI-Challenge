@@ -1,4 +1,4 @@
-﻿using IGotUScraper.Application.Handlers.EmpresaHandlers.Query;
+﻿using IGotUScraper.Application.Handlers.EmpresaHandlers.Query.ObterEmpresa;
 using IGotUScraper.Application.Handlers.ProdutoHandlers.Query;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +12,7 @@ namespace IGotUScraperApi.Controllers.v1
     [ApiController]
     [ApiVersion("1.0")]
     [Route("v{version:apiVersion}/[controller]")]
-    public class EmrpesaController : ControllerBase
+    public class EmpresaController : ControllerBase
     {
         private readonly IMediator _mediator;
 
@@ -20,7 +20,7 @@ namespace IGotUScraperApi.Controllers.v1
         /// 
         /// </summary>
         /// <param name="mediator"></param>
-        public EmrpesaController(IMediator mediator)
+        public EmpresaController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -41,7 +41,21 @@ namespace IGotUScraperApi.Controllers.v1
             return Ok(result);
         }
 
+        /// <summary>
+        /// Obter Empresas Cadastradas 
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        [HttpGet(), MapToApiVersion("1.0")]
+        [SwaggerOperation(Summary = "Obter Empresas", Description = "Obtém empresas cadastradas")]
+        public async Task<IActionResult> ObterEmpresas()
+        {
+            var result = await _mediator.Send(new ObterEmpresasQuery());
 
+            return Ok(result);
+        }
     }
 }
   
