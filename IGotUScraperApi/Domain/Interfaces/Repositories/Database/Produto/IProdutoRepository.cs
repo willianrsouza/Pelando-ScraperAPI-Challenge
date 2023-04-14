@@ -6,6 +6,7 @@ namespace IGotUScraper.Domain.Interfaces.Repositories.Database.Produto
     {
         Task Inserir(ProdutoEntity produto, int idEmpresa);
         Task<ProdutoEntity> ObterPorId(int id);
+        Task<IEnumerable<ProdutoEntity>> ObterProdutos();
         Task<ProdutoEntity> ObterProdutoPorUrl(string url);
     }
 }

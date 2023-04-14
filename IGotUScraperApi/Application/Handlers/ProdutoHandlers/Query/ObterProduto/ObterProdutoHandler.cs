@@ -4,7 +4,7 @@ using IGotUScraper.Domain.Interfaces.Repositories.Database.Produto;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace IGotUScraper.Application.Handlers.ProdutoHandlers.Query
+namespace IGotUScraper.Application.Handlers.ProdutoHandlers.Query.ObterProduto
 {
     public class ObterProdutoHandler : IRequestHandler<ObterProdutoQuery, ProdutoDto>
     {
@@ -29,7 +29,7 @@ namespace IGotUScraper.Application.Handlers.ProdutoHandlers.Query
 
             _logger.LogInformation("Finalizando Handler ObterProduto.");
 
-            return await Task.FromResult<ProdutoDto>(result);
+            return await Task.FromResult(result);
         }
     }
 }
