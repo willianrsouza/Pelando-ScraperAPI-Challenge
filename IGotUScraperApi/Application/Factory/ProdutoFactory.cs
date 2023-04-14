@@ -4,7 +4,7 @@ namespace IGotUScraper.Application.Factory
 {
     public abstract class ProdutoFactory
     {
-        public ProdutoDto MontarProduto(string url)
+        public ProdutoDto FabricarProduto(string url)
         {
             ProdutoDto produto;
             produto = ObterDados(url);

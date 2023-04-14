@@ -1,9 +1,7 @@
 ﻿using IGotUScraper.Application.Handlers.ProdutoHandlers.Command;
 using IGotUScraper.Application.Handlers.ProdutoHandlers.Query.ObterProduto;
-using IGotUScraper.Domain.Base;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using OpenQA.Selenium.Internal;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace IGotUScraperApi.Controllers.v1
@@ -82,4 +80,3 @@ namespace IGotUScraperApi.Controllers.v1
         }
     }
 }
-  

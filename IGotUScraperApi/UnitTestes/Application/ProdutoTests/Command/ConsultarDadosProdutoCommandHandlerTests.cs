@@ -2,10 +2,14 @@
 using IGotUScraper.Application.Factory;
 using IGotUScraper.Application.Handlers.ProdutoHandlers.Command;
 using IGotUScraper.Application.Handlers.ProdutoHandlers.Dto;
+using IGotUScraper.Domain.Entities.EmpresaContext;
 using IGotUScraper.Domain.Entities.ProdutoContext;
+using IGotUScraper.Domain.Interfaces.Repositories.Database.Empresa;
 using IGotUScraper.Domain.Interfaces.Repositories.Database.Produto;
 using Microsoft.Extensions.Logging;
+using Microsoft.VisualStudio.TestPlatform.Utilities;
 using Moq;
+using System;
 using Xunit;
 
 namespace IGotUScraper.Api.UnitTests.Application.ProdutoTests.Command
@@ -14,30 +18,35 @@ namespace IGotUScraper.Api.UnitTests.Application.ProdutoTests.Command
     {
         private Mock<IProdutoRepository> _produtoRepository;
         private Mock<ISimpleProdutoFactory> _simpleProdutoFactory;
+        private Mock<IEmpresaRepository> _empresaRepository;
         private Mock<ILogger<ConsultarDadosProdutoHandler>> _mockLogger;
 
         public ConsultarDadosProdutoHandler ObterHandler()
         {
             _mockLogger = new Mock<ILogger<ConsultarDadosProdutoHandler>>();
             _produtoRepository = new Mock<IProdutoRepository>();
+            _empresaRepository = new Mock<IEmpresaRepository>();
             _simpleProdutoFactory = new Mock<ISimpleProdutoFactory>();
 
-            return new ConsultarDadosProdutoHandler(_mockLogger.Object, new MapperFixture().Mapper, _produtoRepository.Object, _simpleProdutoFactory.Object);
+            return new ConsultarDadosProdutoHandler(_mockLogger.Object, new MapperFixture().Mapper, _produtoRepository.Object, _empresaRepository.Object, _simpleProdutoFactory.Object);
         }
 
         [Fact(DisplayName = "Database Desatualizado")]
         public async Task ConsultarDadosProdutoDbDesatualizado()
         {
             var produtoDto = new ProdutoDto("Titulo", "Imagem", "R$5,90", "Descricao", "Url");
+            var empresa = new EmpresaEntity(1, "Saraiva", "URL");
             var url = "https://www.saraiva.com.br/mais-quente-que-fogo-sucesso-do-tik-tok--20122067/p";
 
             var obterHandler = ObterHandler();
 
             _produtoRepository.Setup(x => x.ObterProdutoPorUrl(url)).ReturnsAsync(It.IsAny<ProdutoEntity>());
 
+            _empresaRepository.Setup(x => x.ObterEmpresaPorNome("saraiva")).ReturnsAsync(empresa);
+
             var produtoFactory = new ProdutoSaraivaFactory();
 
-            _simpleProdutoFactory.Setup(x => x.ObterFactory(It.IsAny<String>())).Returns(produtoFactory);
+            _simpleProdutoFactory.Setup(x => x.ObterFactory(It.IsAny<int>())).Returns(produtoFactory);
 
             var mock = new Mock<ProdutoSaraivaFactory>();
             mock.Setup(x => x.ObterDados(It.IsAny<string>())).Returns(produtoDto);
@@ -66,5 +75,6 @@ namespace IGotUScraper.Api.UnitTests.Application.ProdutoTests.Command
 
             _produtoRepository.Verify(x => x.ObterProdutoPorUrl(It.IsAny<string>()), Times.Once);
         }
+
     }
 }
