@@ -1,7 +1,17 @@
 
-## Endpoints: 
+## Endpoints
 
 ![App Screenshot](https://i.ibb.co/y8L8c3v/Controllers.png)
+
+
+## Retorno da Funcionalidade Principal:
+
+![App Screenshot](https://i.ibb.co/jJQR131/Response.png)
+## Sites Utilizados Para a Extração de Dados (Até o momento)
+
+- Amaro: https://amaro.com/
+- Saraiva: https://www.saraiva.com.br/
+
 ## Funcionalidades da Aplicação
 
 - Consultar e Armazenar dados de um determinado produto exposto online, utilizando o Scraping (Raspagem de Dados).
@@ -26,6 +36,7 @@
 - Dapper - Micro-ORM (Utilizado pela praticidade e controle das consultas)
 - MySql (Utilizado pela praticidade e gratuidade do serviço)
 - Automapper (Utilizado visando a aplicação do Clean Code)
+- Xunit, Moq (Implementação dos testes unitarios)
 
 
 ## Arquitetura Utilizada:
