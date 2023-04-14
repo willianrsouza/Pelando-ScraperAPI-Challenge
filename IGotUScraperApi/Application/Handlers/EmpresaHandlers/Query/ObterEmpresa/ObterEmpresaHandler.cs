@@ -4,7 +4,7 @@ using IGotUScraper.Domain.Interfaces.Repositories.Database.Empresa;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace IGotUScraper.Application.Handlers.EmpresaHandlers.Query
+namespace IGotUScraper.Application.Handlers.EmpresaHandlers.Query.ObterEmpresa
 {
     public class ObterEmpresaHandler : IRequestHandler<ObterEmpresaQuery, EmpresaDto>
     {
@@ -25,12 +25,12 @@ namespace IGotUScraper.Application.Handlers.EmpresaHandlers.Query
 
             if (request.Id < 1)
                 return await Task.FromException<EmpresaDto>(new Exception("Id inválido."));
-            
+
             var result = await _empresaRepository.ObterEmpresa(request.Id);
 
             _logger.LogInformation("Finalizando Handler ObterProduto.");
 
-            return await Task.FromResult<EmpresaDto>( _mapper.Map<EmpresaDto>(result));
+            return await Task.FromResult(_mapper.Map<EmpresaDto>(result));
         }
     }
 }

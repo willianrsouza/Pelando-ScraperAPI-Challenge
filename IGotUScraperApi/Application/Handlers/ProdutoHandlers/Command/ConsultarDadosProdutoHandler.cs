@@ -25,14 +25,22 @@ namespace IGotUScraper.Application.Handlers.ProdutoHandlers.Command
         {
             _logger.LogInformation("Iniciando Handler.");
 
-            var factory = SimpleProdutoFactory.ObterFactory("saraiva");
-            var produto = factory.MontarProduto(request.Url);
+            if (string.IsNullOrEmpty(request.Url))
+                return await Task.FromException<ProdutoDto>(new Exception("A 'URL' é inválida."));
 
-            await _produtoRepository.Inserir(_mapper.Map<ProdutoEntity>(produto), 2);
+            var produtoCadastrado = await _produtoRepository.ObterProdutoPorUrl(request.Url);
+
+            if (produtoCadastrado != null)
+                return await Task.FromResult(_mapper.Map<ProdutoDto>(produtoCadastrado));
+
+            var factory = SimpleProdutoFactory.ObterFactory(request.Url);
+            var produtoFactory = factory.MontarProduto(request.Url);
+
+            await _produtoRepository.Inserir(_mapper.Map<ProdutoEntity>(produtoFactory), 2);
 
             _logger.LogInformation("Finalizando Handler.");
 
-            return await Task.FromResult(produto);
+            return await Task.FromResult(produtoFactory);
         }
     }
 }
