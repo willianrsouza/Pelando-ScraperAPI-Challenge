@@ -1,16 +1,27 @@
 
+## 🚀 Sobre mim
+
+Olá, meu nome é Willian! Tenho 22 anos. Sou Analista e Desenvolvedor de Sistemas.
+Sou apaixonado por desenvolvimento de Software, Modelagem
+3D e Artes Digitais. Aproveitem o projeto, espero que gostem! 
+
+
 ## Endpoints
 
 ![App Screenshot](https://i.ibb.co/y8L8c3v/Controllers.png)
 
 
-## Retorno da Funcionalidade Principal:
+## Retorno da Funcionalidade Principal
 
 ![App Screenshot](https://i.ibb.co/jJQR131/Response.png)
 
-## Visão geral da Arquitetura:
+## Visão geral do Projeto
 
 ![App Screenshot](https://i.ibb.co/WGbGVyP/overview.png)
+
+## Testes Unitários
+
+![App Screenshot](https://i.ibb.co/JHPFzQv/Testes.png)
 ## Sites Utilizados Para a Extração de Dados (Até o momento)
 
 - Amaro: https://amaro.com/
@@ -28,7 +39,7 @@
 
 ## Padrões de Projeto Aplicados
 
-- Mediator (MediatorR) - Redirecionamento de Requisições.
+- Mediator (MediatR) - Redirecionamento de Requisições.
 - Factory Method - Uma fabrica responsavel pela criação de um produto de acordo com seu contexto. 
 - Injeção de Dependencia (Inversão de Controle) - Responsavel por individualizar a responsabilidade das classes.
 - CQRS - Segregação de Responsabilidade de Comando e Consulta  - Utilizei pensando em consumo de possiveis contextos futuros de banco. 
@@ -43,7 +54,7 @@
 - Xunit, Moq (Implementação dos testes unitarios)
 
 
-## Arquitetura Utilizada:
+## Arquitetura Utilizada
 
 ![App Screenshot](https://five.agency/wp-content/uploads/2016/11/Graph-2.png)
 
@@ -73,4 +84,12 @@ Inicie o projeto
 ```bash
   dotnet run
 ```
+
+
+## 🔗 Links
+
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://openprocessing.org/user/356020/?view=sketches&o=4)
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/willianrsouza/)
+
 
