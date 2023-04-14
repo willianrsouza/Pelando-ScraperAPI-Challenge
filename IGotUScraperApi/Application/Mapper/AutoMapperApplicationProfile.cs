@@ -3,9 +3,11 @@ using IGotUScraper.Application.Handlers.EmpresaHandlers.Dto;
 using IGotUScraper.Application.Handlers.ProdutoHandlers.Dto;
 using IGotUScraper.Domain.Entities.EmpresaContext;
 using IGotUScraper.Domain.Entities.ProdutoContext;
+using System.Diagnostics.CodeAnalysis;
 
 namespace IGotUScraper.Application.Mapper
 {
+    [ExcludeFromCodeCoverage]
     public class AutoMapperApplicationProfile : Profile
     {
         public AutoMapperApplicationProfile()

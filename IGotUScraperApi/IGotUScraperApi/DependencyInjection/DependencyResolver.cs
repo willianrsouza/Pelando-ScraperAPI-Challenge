@@ -7,9 +7,11 @@ using IGotUScraper.Infrastructure.Base;
 using IGotUScraper.Infrastructure.Db.Pelando.EmpresaCollection;
 using IGotUScraper.Infrastructure.Db.Pelando.ProdutoCollection;
 using IGotUScraper.Infrastructure.Mapper;
+using System.Diagnostics.CodeAnalysis;
 
 namespace IGotUScraperApi.DependencyInjection
 {
+    [ExcludeFromCodeCoverage]
     public static class DependencyResolver
     {
         public static void AddDependencyResolver(this IServiceCollection services)

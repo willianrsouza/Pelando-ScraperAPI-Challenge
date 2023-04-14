@@ -26,6 +26,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Application\IGotUScraper.Application.csproj" />
     <ProjectReference Include="..\Domain\IGotUScraper.Domain.csproj" />
+    <ProjectReference Include="..\IGotUScraperApi\IGotUScraper.Api.csproj" />
     <ProjectReference Include="..\Infrastructure\IGotUScraper.Infrastructure.csproj" />
   </ItemGroup>
 

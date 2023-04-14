@@ -36,8 +36,8 @@ namespace IGotUScraper.Application.Handlers.ProdutoHandlers.Command
             var factory = _simpleProdutoFactory.ObterFactory(request.Url);
             var produtoFactory = factory.MontarProduto(request.Url);
 
-         //   if (produtoFactory != null)
-          //     await _produtoRepository.Inserir(_mapper.Map<ProdutoEntity>(produtoFactory), 2);
+           if (produtoFactory != null)
+              await _produtoRepository.Inserir(_mapper.Map<ProdutoEntity>(produtoFactory), 2);
 
             _logger.LogInformation("Finalizando Handler.");
 
