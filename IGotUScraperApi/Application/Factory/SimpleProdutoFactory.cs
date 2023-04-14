@@ -1,37 +1,27 @@
-﻿using IGotUScraper.Application.Handlers.ProdutoHandlers.Dto;
-using IGotUScraper.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IGotUScraper.Application.Factory
+﻿namespace IGotUScraper.Application.Factory
 {
     public class SimpleProdutoFactory : ISimpleProdutoFactory
     {
-        public ProdutoFactory ObterFactory(string url) 
+        public ProdutoFactory ObterFactory(int idEmpresa)
         {
             ProdutoFactory? produto;
 
-            var nomeEmpresa = ExtrairDados.ObterNomeEmpresa(url);
-
-            switch (nomeEmpresa) 
+            switch (idEmpresa)
             {
-                case "amaro":
-                    produto = new ProdutoAmaroFactory();
-                break;
-
-                case "saraiva":
+                case 1:
                     produto = new ProdutoSaraivaFactory();
+                    break;
+
+                case 2:
+                    produto = new ProdutoAmaroFactory();
                     break;
 
                 default:
-                    produto = new ProdutoSaraivaFactory();
+                    produto = null;
                     break;
             }
 
-             return produto;
-        } 
+            return produto;
+        }
     }
 }

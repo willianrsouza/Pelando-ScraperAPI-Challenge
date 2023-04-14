@@ -17,14 +17,14 @@ namespace IGotUScraper.Application.Factory
 
         public override ProdutoDto ObterDados(string url)
         {
-            var html = _htmlWeb.Load(url);
-            ConstruirProduto(html, url);
-
+            ConstruirProduto(url);
             return _produtoDto;
         }
 
-        private void ConstruirProduto(HtmlDocument html, string url)
+        private void ConstruirProduto( string url)
         {
+            var html = _htmlWeb.Load(url);
+
             _produtoDto.Titulo = ExtrairDados.InnerText(html, "/html/body/div[2]/div/div[1]/div/div/div/div[4]/div/div[1]/div[2]/section/div/div[2]/div/div", "/html/body/div[2]/div/div[1]/div/div/div/div[4]/div/div[1]/div[2]/section/div/div[2]/div/div/div/div[1]/div/div/div/h1/span");
             _produtoDto.Preco = ExtrairDados.InnerText(html, "/html/body/div[2]/div/div[1]/div/div/div/div[4]/div/div[1]/div[2]/section/div/div[2]/div/div", "/html/body/div[2]/div/div[1]/div/div/div/div[4]/div/div[1]/div[2]/section/div/div[2]/div/div/div/div[4]/div/div/div[1]/div/div/div[2]");
             _produtoDto.Descricao = ExtrairDados.InnerText(html, "/html/body/div[2]/div/div[1]/div/div/div/div[4]/div/div[1]/div[3]/section", "/html/body/div[2]/div/div[1]/div/div/div/div[4]/div/div[1]/div[3]/section/div/div/div/div/div/div[1]/div/text()");

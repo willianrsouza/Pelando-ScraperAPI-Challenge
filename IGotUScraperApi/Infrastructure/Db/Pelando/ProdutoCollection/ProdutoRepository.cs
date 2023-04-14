@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Dapper;
-using IGotUScraper.Domain.Base;
 using IGotUScraper.Domain.Entities.ProdutoContext;
 using IGotUScraper.Domain.Interfaces.Repositories.Database.Produto;
 using IGotUScraper.Infrastructure.Base;

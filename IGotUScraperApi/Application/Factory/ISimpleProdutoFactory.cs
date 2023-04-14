@@ -8,6 +8,6 @@ namespace IGotUScraper.Application.Factory
 {
     public interface ISimpleProdutoFactory
     {
-        public ProdutoFactory ObterFactory(string url);
+        public ProdutoFactory ObterFactory(int idEmpresa);
     }
 }
