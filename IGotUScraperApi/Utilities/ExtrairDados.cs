@@ -1,6 +1,7 @@
 ﻿using HtmlAgilityPack;
 using System.Reflection.Metadata;
 using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 namespace IGotUScraper.Utilities
 {
@@ -21,13 +22,28 @@ namespace IGotUScraper.Utilities
             return TratarDados.LimparCaracteres(url);
         }
 
-        public static string ImagemSite(HtmlNodeCollection node, string SectionUm, string SectionDois)
+        public static string Imagem(HtmlDocument html, string box, string SectionUm, string SectionDois)
         {
-            var result = node?.Descendants(SectionUm)
+            string? result = "Não foi possivel localizar.";
+
+             result = html.DocumentNode.SelectNodes(xpath: box).Descendants(SectionUm)
                                .Select(e => e.GetAttributeValue(SectionDois, null))
                                .Where(s => !String.IsNullOrEmpty(s)).FirstOrDefault();
+            return result;
+        }
 
-           return string.IsNullOrEmpty(result) ? "N/P" : result;
+        public static string InnerText(HtmlDocument html, string caminhoPrimario, string caminhoSecundario)
+        {
+            var sections = html.DocumentNode.SelectNodes(xpath: caminhoPrimario);
+
+            string? result = "Não foi possivel localizar.";
+
+            foreach (var item in sections)
+            {
+                result = item.SelectSingleNode(caminhoSecundario).InnerText;
+            }
+
+            return result;
         }
 
     }
