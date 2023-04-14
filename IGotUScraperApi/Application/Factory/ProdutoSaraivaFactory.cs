@@ -1,50 +1,61 @@
 ﻿using HtmlAgilityPack;
-using IGotUScraper.Application.Factory.Dto;
+using IGotUScraper.Application.Handlers.ProdutoHandlers.Dto;
+using IGotUScraper.Utilities;
 
 namespace IGotUScraper.Application.Factory
 {
     public class ProdutoSaraivaFactory : ProdutoFactory
     {
         private readonly HtmlWeb _htmlWeb;
-        private FactoryDto _factoryDto;
+        private ProdutoDto _produtoDto;
 
         public ProdutoSaraivaFactory()
         {
             _htmlWeb = new HtmlWeb();
-            _factoryDto = new FactoryDto();
+            _produtoDto = new ProdutoDto();
         }
 
-        protected override FactoryDto ObterDados(string url)
+        protected override ProdutoDto ObterDados(string url)
         {
             var document = _htmlWeb.Load(url);
 
-            construirValoresProduto(document);
-            construirDescricaoProduto(document);
+            obterValoresProduto(document);
+            obterDescricaoProduto(document);
+            obterImagemProduto(document);
 
-            return _factoryDto;
+            _produtoDto.UrlBase = url;
+
+            return _produtoDto;
         }
 
-        private void construirValoresProduto(HtmlDocument document)
+        private void obterValoresProduto(HtmlDocument document)
         {
             var valoresProduto = document.DocumentNode
                 .SelectNodes(xpath: "/html/body/div[2]/div/div[1]/div/div/div/div[4]/div/div[1]/div[2]/section/div/div[2]/div/div");
 
             foreach (var item in valoresProduto)
             {
-                _factoryDto.Titulo = item.SelectSingleNode("/html/body/div[2]/div/div[1]/div/div/div/div[4]/div/div[1]/div[2]/section/div/div[2]/div/div/div/div[1]/div/div/div/h1/span").InnerText;
-                _factoryDto.Preco = item.SelectSingleNode("/html/body/div[2]/div/div[1]/div/div/div/div[4]/div/div[1]/div[2]/section/div/div[2]/div/div/div/div[4]/div/div/div[1]/div/div/div[2]/span/span/span").InnerText;
+                _produtoDto.Titulo = item.SelectSingleNode("/html/body/div[2]/div/div[1]/div/div/div/div[4]/div/div[1]/div[2]/section/div/div[2]/div/div/div/div[1]/div/div/div/h1/span").InnerText;
+                _produtoDto.Preco = TratarDados.SomenteNumero(item.SelectSingleNode("/html/body/div[2]/div/div[1]/div/div/div/div[4]/div/div[1]/div[2]/section/div/div[2]/div/div/div/div[4]/div/div/div[1]/div/div/div[2]/span/span/span").InnerText);
             }
         }
 
-        private void construirDescricaoProduto(HtmlDocument document)
+        private void obterDescricaoProduto(HtmlDocument document)
         {
             var result = document.DocumentNode
                 .SelectNodes(xpath: "/html/body/div[2]/div/div[1]/div/div/div/div[4]/div/div[1]/div[3]/section/div/div");
 
             foreach (var item in result)
             {
-                _factoryDto.Descricao = item.SelectSingleNode("/html/body/div[2]/div/div[1]/div/div/div/div[4]/div/div[1]/div[3]/section/div/div/div/div/div/div[1]/div/text()").InnerText;
+                _produtoDto.Descricao = item.SelectSingleNode("/html/body/div[2]/div/div[1]/div/div/div/div[4]/div/div[1]/div[3]/section/div/div/div/div/div/div[1]/div/text()").InnerText;
             }
+        }
+
+        private void obterImagemProduto(HtmlDocument document)
+        {
+            _produtoDto.Imagem = document.DocumentNode.Descendants("img")
+                                .Select(e => e.GetAttributeValue("src", null))
+                                .Where(s => !String.IsNullOrEmpty(s)).FirstOrDefault();
         }
     }
 }

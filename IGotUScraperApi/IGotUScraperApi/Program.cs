@@ -1,7 +1,8 @@
 using IGotUScraperApi.DependencyInjection;
 using IGotUScraperApi.Startup.VersionamentoApi;
 using Microsoft.AspNetCore.Server.IISIntegration;
-using System.Reflection;
+using MySqlConnector;
+using System;
 
 internal static class Program
 {
