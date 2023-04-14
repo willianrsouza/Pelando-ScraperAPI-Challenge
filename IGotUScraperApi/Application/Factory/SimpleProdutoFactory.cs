@@ -14,7 +14,7 @@ namespace IGotUScraper.Application.Factory
         {
             ProdutoFactory? produto;
 
-            var nomeEmpresa = ExtrairDadosPath.ObterNomeEmpresa(url);
+            var nomeEmpresa = ExtrairDados.ObterNomeEmpresa(url);
 
             switch (nomeEmpresa) 
             {

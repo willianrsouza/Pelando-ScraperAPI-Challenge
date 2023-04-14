@@ -26,7 +26,7 @@ namespace IGotUScraperApi.Controllers.v1
         }
 
         /// <summary>
-        /// Obter Produto por Id
+        /// Obter Empresa por Id
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>

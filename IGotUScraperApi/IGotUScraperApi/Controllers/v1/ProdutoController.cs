@@ -34,7 +34,7 @@ namespace IGotUScraperApi.Controllers.v1
         /// <returns></returns>
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [HttpPost(), MapToApiVersion("1.0")]
-        [SwaggerOperation(Summary = "Consultar - Cadastras Produto", Description = "Consultar - Cadastras dados de um produto.")]
+        [SwaggerOperation(Summary = "Consultar - Cadastras Produto Por 'URL' ", Description = "Consultar - Cadastras dados de um produto.")]
         public async Task<IActionResult> ConsultarProduto([FromBody] ConsultarDadosProdutoCommand query)
         {
             var resultado = await _mediator.Send(query);

@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
 using IGotUScraper.Application.Factory;
-using IGotUScraper.Application.Handlers.EmpresaHandlers.Dto;
 using IGotUScraper.Application.Handlers.ProdutoHandlers.Dto;
 using IGotUScraper.Domain.Entities.ProdutoContext;
 using IGotUScraper.Domain.Interfaces.Repositories.Database.Produto;
-using IGotUScraper.Utilities;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
@@ -33,7 +31,7 @@ namespace IGotUScraper.Application.Handlers.ProdutoHandlers.Command
             var produtoCadastrado = await _produtoRepository.ObterProdutoPorUrl(request.Url);
 
             if (produtoCadastrado != null)
-                return await Task.FromResult(_mapper.Map<ProdutoDto>(produtoCadastrado)); 
+                return await Task.FromResult(_mapper.Map<ProdutoDto>(produtoCadastrado));
 
             var factory = SimpleProdutoFactory.ObterFactory(request.Url);
             var produtoFactory = factory.MontarProduto(request.Url);
