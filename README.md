@@ -14,7 +14,7 @@ Sou apaixonado por desenvolvimento de Software, Modelagem
 
 
 
-## Endpoints Disponiveis
+## Endpoints Implementados
 
 ![App Screenshot](https://i.ibb.co/y8L8c3v/Controllers.png)
 
@@ -60,7 +60,7 @@ Sou apaixonado por desenvolvimento de Software, Modelagem
 - Xunit, Moq (Implementação dos Testes Unitarios)
 
 
-## Arquitetura Utilizada - Clean Architecture
+## Arquitetura Utilizada | Clean Architecture
 
 ![App Screenshot](https://five.agency/wp-content/uploads/2016/11/Graph-2.png)
 
