@@ -92,31 +92,31 @@ Sou apaixonado por desenvolvimento de Software, Modelagem
 - Você encontrara toda a estrutura dos dados no seguinte caminho: 'IGotUScraperAPI\IGotUScraperApi\IGotUScraperApi\Startup\Database\Scripts' assim podera replicar a estrutura criada. 
 ## Rodando Localmente
 
-Clone o projeto:
+Clone o projeto
 
 ```bash
   git clone https://github.com/willianrsouza/IGotUScraperAPI.git
 ```
 
-Entre no diretório do projeto:
+Entre no diretório do projeto
 
 ```bash
   cd IGotUScraperAPI
 ```
 
-Compile o Projeto e suas Dependências:
+Compile o Projeto e suas Dependências
 
 ```bash
   dotnet build
 ```
 
-Importe a estrutura do banco de dados criada, para um Banco MySql. A estrutura estará disponivel no seguinte caminho da aplicação:
+Importe a estrutura do banco de dados criada, para um Banco MySql. A estrutura estará disponivel no seguinte caminho da aplicação
 
 ```bash
    'IGotUScraperAPI/IGotUScraperApi/IGotUScraperApi/Startup/Database/Scripts'
 ```
 
-Altere as variaveis de conexão do banco de dados, acesse o arquivo abaixo:
+Altere as variaveis de conexão do banco de dados, acesse o arquivo abaixo
 
 ```bash
   
@@ -124,7 +124,7 @@ Altere as variaveis de conexão do banco de dados, acesse o arquivo abaixo:
  
 ``` 
 
-Altere a ConnectionStrings de acordo com as suas variveis:
+Altere a ConnectionStrings de acordo com as suas variveis
 
 ```bash
  "ConnectionStrings": {
@@ -133,7 +133,7 @@ Altere a ConnectionStrings de acordo com as suas variveis:
 ```
 
 
-Inicie o projeto:
+Inicie o projeto
 
 ```bash
   dotnet run
