@@ -15,7 +15,7 @@ Sou apaixonado por desenvolvimento de Software, Modelagem
 
 ![App Screenshot](https://i.ibb.co/jJQR131/Response.png)
 
-## Visão geral do Projeto
+## Visão Geral do Projeto
 
 ![App Screenshot](https://i.ibb.co/WGbGVyP/overview.png)
 
@@ -23,9 +23,13 @@ Sou apaixonado por desenvolvimento de Software, Modelagem
 
 ![App Screenshot](https://i.ibb.co/JHPFzQv/Testes.png)
 
-## Banco de Dados
+## Visão Geral do Banco de Dados
 
 ![App Screenshot](https://i.ibb.co/yR2vLtK/Database.png)
+
+## Visão dos Dados no Banco 
+
+![App Screenshot](https://i.ibb.co/BjL6Lnh/Banco-de-dados.png)
 ## Sites Utilizados Para a Extração de Dados (Até o momento)
 
 - Amaro: https://amaro.com/
