@@ -1,14 +1,17 @@
 
-# IGotUScraper.API 
+
+# IGotUScraper.API 🚀
 
 A aplicação 'IGotUScraper' é uma API WEB construida em três dias, em pequenos intervalos do meu trabalho. O objetivo da aplicação é a extração de dados de um produto em um respectivo site. O desafio foi proposto pela 'Pelando' como teste de avaliação. 
 
 
-## 🚀 Sobre mim
+##  Sobre mim 
 
 Olá, meu nome é Willian! Tenho 22 anos. Sou graduado em Analise e Desenvolvimento de Sistemas.
 Sou apaixonado por desenvolvimento de Software, Modelagem
 3D e Artes Digitais.  
+
+
 
 
 ## Endpoints Disponiveis
@@ -21,7 +24,7 @@ Sou apaixonado por desenvolvimento de Software, Modelagem
 
 ![App Screenshot](https://i.ibb.co/jJQR131/Response.png)
 
-- Um exemplo do retorno de uma consulta na 'amaro'.
+- Exemplo de retorno de uma consulta realizada na www.amaro.com.
 
 
 
@@ -71,13 +74,13 @@ Sou apaixonado por desenvolvimento de Software, Modelagem
 ![App Screenshot](https://i.ibb.co/JHPFzQv/Testes.png)
 
 - Os Testes Unitarios foram realizados utilizando a 'XUnit' & 'Moq'.
-- Realizei os testes dos contextos: Controller, Application.
+- Realizei os testes dos contextos: 'Controller', 'Application'.
 
 ## Visão Geral do Banco de Dados
 
 ![App Screenshot](https://i.ibb.co/yR2vLtK/Database.png)
 
-- Realização de um esquema simples, para projetar o relacionamento dos dados recuperados. 
+- Realização de um esquema simples para projetar o relacionamento dos dados recuperados. 
 
 ## Visão dos Dados Salvos
 
