@@ -1,5 +1,7 @@
 
 
+![App Screenshot](https://github.com/willianrsouza/ImagesResource/blob/main/IGotUScraperAPI/logo.png?raw=true)
+
 # IGotUScraper.API 🚀
 
 A aplicação 'IGotUScraper' é uma API WEB construida em três dias, em pequenos intervalos do meu trabalho. O objetivo da aplicação é a extração de dados de um produto em um respectivo site. O desafio foi proposto pela 'Pelando' como teste de avaliação. 
@@ -16,13 +18,13 @@ Sou apaixonado por desenvolvimento de Software, Modelagem
 
 ## Endpoints Implementados
 
-![App Screenshot](https://i.ibb.co/y8L8c3v/Controllers.png)
+![App Screenshot](https://github.com/willianrsouza/ImagesResource/blob/main/IGotUScraperAPI/controllers.png?raw=true)
 
 - Foram criados endpoint's dos dois contextos relacionais do Banco de Dados. 
 
 ## Retorno da Funcionalidade Principal 
 
-![App Screenshot](https://i.ibb.co/jJQR131/Response.png)
+![App Screenshot](https://github.com/willianrsouza/ImagesResource/blob/main/IGotUScraperAPI/response.png?raw=true)
 
 - Exemplo de retorno de uma consulta realizada na www.amaro.com.
 
@@ -62,7 +64,7 @@ Sou apaixonado por desenvolvimento de Software, Modelagem
 
 ## Arquitetura Utilizada | Clean Architecture
 
-![App Screenshot](https://five.agency/wp-content/uploads/2016/11/Graph-2.png)
+![App Screenshot](https://github.com/willianrsouza/ImagesResource/blob/main/IGotUScraperAPI/arquitetura.png?raw=true)
 
 
 - A implementação da 'Clean Architecture' foi uma escolha pessoal, pois além de gostar bastante dessa visão arquitetural e divisoria de responsabilidade, poderia colocar em prática novas visões adquiridas recentemente da mesma.  
@@ -71,20 +73,20 @@ Sou apaixonado por desenvolvimento de Software, Modelagem
 
 ## Testes Unitários
 
-![App Screenshot](https://i.ibb.co/JHPFzQv/Testes.png)
+![App Screenshot](https://github.com/willianrsouza/ImagesResource/blob/main/IGotUScraperAPI/testes.png?raw=true)
 
 - Os Testes Unitarios foram realizados utilizando a 'XUnit' & 'Moq'.
 - Realizei os testes dos contextos: 'Controller', 'Application'.
 
 ## Visão Geral do Banco de Dados
 
-![App Screenshot](https://i.ibb.co/yR2vLtK/Database.png)
+![App Screenshot](https://github.com/willianrsouza/ImagesResource/blob/main/IGotUScraperAPI/bancodedados.png?raw=true)
 
 - Realização de um esquema simples para projetar o relacionamento dos dados recuperados. 
 
 ## Visão dos Dados Salvos
 
-![App Screenshot](https://i.ibb.co/BjL6Lnh/Banco-de-dados.png)
+![App Screenshot](https://github.com/willianrsouza/ImagesResource/blob/main/IGotUScraperAPI/dados.png?raw=true)
 
 - Visão dos dados armazenados no Banco de Dados.  
 - Você encontrara toda a estrutura dos dados no seguinte caminho: 'IGotUScraperAPI\IGotUScraperApi\IGotUScraperApi\Startup\Database\Scripts' assim podera replicar a estrutura criada. 
