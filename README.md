@@ -80,6 +80,25 @@ A camada de aplicação é responsável por orquestrar a interação entre a cam
 Os benefícios de utilizar essa separação de camadas, é a facilidade de testar cada camada separadamente, a flexibilidade para mudar de tecnologia, implementação sem afetar a lógica de negócio e a escalabilidade da aplicação. 
 
 
+- CQRS (Command Query Responsability Segregation)
+
+Command (Persistencia)
+
+O mesmo é responsável por receber solicitações de alteração de estado do sistema (inserção, atualização ou exclusão) e realizar as operações necessárias para atender a essas solicitações. Esse modelo é projetado para ser altamente consistente e transacional, garantindo que as operações sejam executadas com sucesso u que sejam revertidas caso ocorra algum erro. 
+
+Query (Consulta)
+
+O modelo de consulta é responsável por receber solicitações de leitura de informações do sistema (pesquisa, listagens ou detalhes) e retorna os dados solicitados. Esse modelo é projetado para ser altamente escalável e eficiente, permitindo que muitas solicitações sejam atendidas simultaneamente. 
+
+Benefícios
+
+- Permite que você otimize cada modelo para a tarefa especifica que está desempenhando. Exemplo: Otimizar modelos de consulta para consultas em cache e otimizar o modelo de comando para transações de banco de dados. 
+  
+- Escalonamento, como os modelos de comando e consultas são independentes um do outro, você pode escalá-los separadamente. 
+  
+  CQRS é um padrão arquitetural que separa a lógica de escrita e leitura em um sistema em modelos distintos. Essa separação traz várias vantagens, incluindo otimização de desempenho, escalabilidade e manutenibilidade do código.
+
+
 ## Testes Unitários
 
 ![App Screenshot](https://github.com/willianrsouza/ImagesResource/blob/main/IGotUScraperAPI/testes.png?raw=true)
