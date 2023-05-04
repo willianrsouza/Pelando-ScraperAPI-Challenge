@@ -67,8 +67,19 @@ Sou apaixonado por desenvolvimento de Software, Modelagem
 ![App Screenshot](https://github.com/willianrsouza/ImagesResource/blob/main/IGotUScraperAPI/arquitetura.png?raw=true)
 
 
-- A implementação da 'Clean Architecture' foi uma escolha pessoal, pois além de gostar bastante dessa visão arquitetural e divisoria de responsabilidade, poderia colocar em prática novas visões adquiridas recentemente da mesma.  
+- Domain 
 
+A camada de domínio representa as entidades e regras de negócio da aplicação, que são independentes de qualquer tecnologia ou framework. Aqui, podemos definir as classes de entidade e os serviços de negócio, podemos utilizar técnicas como DDD (Domain-Driven Design) para manter a lógica de negócio isolada do resto do sistema. 
+
+- Infrastructure 
+
+A camada de infraestrutura é responsável por implementar a lógica de acesso a dados e outras tecnologias especificas, como serviços de e-mail, cache, etc. Ela é a única camada que pode fazer referência a biblioteca externas e frameworks. Aqui, podemos criar classes que implementam interfaces definidas na camada de domínio, para que a logica de acesso a dados possa ser injetada nas classes de serviço de negócio. 
+
+- Application 
+
+A camada de aplicação é responsável por orquestrar a interação entre a camadas de Domínio  e Infraestrutura. Aqui, podemos utilizar um padrão como CQRS (Command Query   Segregation) para separar a lógica de leitura e escrita em diferentes bancos de dados, acessos a serviços externos, etc. 
+
+Os benefícios de utilizar essa separação de camadas, é a facilidade de testar cada camada separadamente, a flexibilidade para mudar de tecnologia, implementação sem afetar a lógica de negócio e a escalabilidade da aplicação. 
 
 
 ## Testes Unitários
@@ -90,6 +101,24 @@ Sou apaixonado por desenvolvimento de Software, Modelagem
 
 - Visão dos dados armazenados no Banco de Dados.  
 - Você encontrara toda a estrutura dos dados no seguinte caminho: 'IGotUScraperAPI\IGotUScraperApi\IGotUScraperApi\Startup\Database\Scripts' assim podera replicar a estrutura criada. 
+
+## Revisão de Engenharia 
+
+- Aplicar o padrão "Notification", o padrão Notification é responsável por centralizar o tratamento de possíveis erros/exceções. Permitindo apenas a saída de logs da aplicação em casos de tratamento de erros, mensagem de exceção evitando a criação de exceção desnecessária.  Exemplos desse caso é a criação desnecessária de exceções de aplicação. 
+  
+- Evitar o tratamento de dados diretamente na Controller, essa validações após a implementação do Notification devem ser tratadas diretamente na camada de aplicação, delegando de forma correta as determinadas responsabilidades.
+   
+- Reforçar a necessidade de tratar regras de negocio na camada de domínio, evitando a duplicação desnecessária de código, criando domínios consistentes e evitando entidades anêmicas. 
+  
+-  Implementar testes unitários que quebram de diferentes formas o fluxo esperado, e implementação de testes unitários para as futuras adições do padrão Notification na camada de domínio. 
+  
+- 'EmpresaEntity', provavelmente se tornaria um "ValueObject",  pensando que flutuaria em diferentes contextos e tem grandes chances de ser anêmica quanto ao que se trata trafego de dados.  
+  
+- Revisar a implementação do padrão Factory.
+  
+- Revisar a documentação do Swagger. 
+
+
 ## Rodando Localmente
 
 Clone o projeto
