@@ -14,8 +14,6 @@ Sou apaixonado por desenvolvimento de Software, Modelagem
 3D e Artes Digitais.  
 
 
-
-
 ## Endpoints Implementados
 
 ![App Screenshot](https://github.com/willianrsouza/ImagesResource/blob/main/IGotUScraperAPI/controllers.png?raw=true)
@@ -27,7 +25,6 @@ Sou apaixonado por desenvolvimento de Software, Modelagem
 ![App Screenshot](https://github.com/willianrsouza/ImagesResource/blob/main/IGotUScraperAPI/response.png?raw=true)
 
 - Exemplo de retorno de uma consulta realizada na www.amaro.com.
-
 
 
 ## Sites Utilizados Para a Extração de Dados (Até o momento)
@@ -50,7 +47,8 @@ Sou apaixonado por desenvolvimento de Software, Modelagem
 - Mediator (MediatR) - Redirecionamento de Requisições.
 - Factory Method - Uma fabrica responsavel pela criação de um produto de acordo com seu contexto. 
 - Injeção de Dependencia (Inversão de Controle) - Responsavel por individualizar a responsabilidade das classes.
-- CQRS - Segregação de Responsabilidade de Comando e Consulta  - Utilizei pensando em consumo de possiveis contextos futuros de banco. 
+- CQRS - Segregação de Responsabilidade de Comando e Consulta 
+
 
 ## Tecnologias | Bibliotecas Utilizadas
 
@@ -112,7 +110,7 @@ Os benefícios de utilizar essa separação de camadas, é a facilidade de testa
   
 -  Implementar testes unitários que quebram de diferentes formas o fluxo esperado, e implementação de testes unitários para as futuras adições do padrão Notification na camada de domínio. 
   
-- 'EmpresaEntity', provavelmente se tornaria um "ValueObject",  pensando que flutuaria em diferentes contextos e tem grandes chances de ser anêmica quanto ao que se trata trafego de dados.  
+- 'EmpresaEntity', provavelmente se tornaria um "ValueObject",  pensando que flutuaria em diferentes contextos e tem grandes chances de ser uma entidade anêmica.
   
 - Revisar a implementação do padrão Factory.
   
