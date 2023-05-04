@@ -119,7 +119,7 @@ Benefícios
 - Visão dos dados armazenados no Banco de Dados.  
 - Você encontrara toda a estrutura dos dados no seguinte caminho: 'IGotUScraperAPI\IGotUScraperApi\IGotUScraperApi\Startup\Database\Scripts' assim podera replicar a estrutura criada. 
 
-## Revisão de Engenharia 
+## Revisão de Engenharia  | TO-DO List 
 
 - Aplicar o padrão "Notification", o padrão Notification é responsável por centralizar o tratamento de possíveis erros/exceções. Permitindo apenas a saída de logs da aplicação em casos de tratamento de erros, mensagem de exceção evitando a criação de exceção desnecessária.  Exemplos desse caso é a criação desnecessária de exceções de aplicação. 
   
